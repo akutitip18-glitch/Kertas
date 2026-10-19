@@ -26,6 +26,7 @@
 @media(max-width:900px){.cols2,.cols3{grid-template-columns:1fr 1fr}.stats{grid-template-columns:repeat(2,1fr)}.head{padding:12px 14px}.wrap{padding:0 12px 36px}.checkrow{grid-template-columns:1fr}.checkcontrols{grid-template-columns:120px 1fr}}
 @media(max-width:620px){.head{align-items:flex-start}.brand h1{font-size:14px}.brand p{max-width:200px}.actions .btn{font-size:10px;padding:7px}.cols2,.cols3,.split{grid-template-columns:1fr}.field,.field.third,.field.quarter{grid-column:1/-1}.stats{gap:8px}.stat{padding:11px}.stat .n{font-size:20px}.caseitem{align-items:flex-start;flex-direction:column}.checkcontrols{grid-template-columns:1fr}.section-head{flex-direction:column}.wrap{margin-top:14px}}
 @media print{header,.notice,.no-print,.tabs,.foot{display:none!important}body{background:white;font-size:11px}.wrap{max-width:none;margin:0;padding:0}.view{display:none!important}.view.print-active{display:block!important}.card,.phase{box-shadow:none;break-inside:avoid}.docpreview{border:0;max-width:none;margin:0;padding:0}.checkrow{break-inside:avoid}}
+
 </style>
 <style>
 /* Sistem font lokal: tidak mengambil font dari jaringan. */
@@ -695,6 +696,7 @@ label{font-weight:700 !important;letter-spacing:0.02em !important;color:#1e3a4f 
 #spse-preview{overflow-wrap:anywhere}
 #spse-preview table{table-layout:fixed;overflow-wrap:anywhere}
 #spse-preview td,#spse-preview th{word-break:break-word}
+.spse-org-head{text-align:center;border-bottom:2px solid #333;padding:2px 0 9px;margin-bottom:13px;font-size:10pt;line-height:1.25}.spse-org-head strong{display:block;font-size:13pt;margin-top:4px}.spse-center{text-align:center;margin:2px 0 8px!important;font-size:10.5pt}.spse-data-table{table-layout:fixed;width:100%;border-collapse:collapse}.spse-data-table td,.spse-data-table th{vertical-align:top;overflow-wrap:anywhere}.spse-data-table:not(.kv) th{background:#e7edf2;font-weight:700;text-align:center}.spse-data-table.kv td:first-child{font-weight:700;background:#f2f5f7;width:30%}.spse-sign{line-height:1.3}
 @media(max-width:900px){
  .spse-case-picker{flex-direction:column}
  .spse-case-actions{padding-top:0;width:100%}
@@ -953,10 +955,39 @@ body.kkpp-lowfi,body.kkpp-lowfi main{background:#f3f6f8!important;background-ima
  #view-spse>.ops-map-slot,#view-spse>.kkpp-v7-card,#spse-ecat-banner,#spse-kop-status{display:none!important}
  #view-spse.print-bundle #spse-bundle{display:block}
  #view-spse.print-bundle #spse-preview{display:none!important}
+ #view-spse:not(.print-bundle) #spse-preview{display:block!important;visibility:visible!important;color:#111!important;background:#fff!important;min-height:0!important}
+ #view-spse:not(.print-bundle) #spse-preview *{visibility:visible!important;color:#111}
+ #view-spse #spse-preview h1{font-size:16pt!important;text-align:center!important;margin:0 0 12pt!important}
+ #view-spse #spse-preview h2{font-size:12pt!important;margin:14pt 0 6pt!important;break-after:avoid}
+ #view-spse #spse-preview p{white-space:normal!important;overflow-wrap:anywhere!important;margin:5pt 0!important}
+ #view-spse #spse-preview table{display:table!important;width:100%!important;border-collapse:collapse!important;table-layout:fixed!important;margin:7pt 0!important}
+ #view-spse #spse-preview th,#view-spse #spse-preview td{border:1px solid #555!important;padding:5pt!important;vertical-align:top!important;overflow-wrap:anywhere!important;color:#111!important}
  #spse-bundle .docpreview{transform:none!important;box-shadow:none!important;border-radius:0!important}
  .spse-print-doc{break-after:page}.spse-print-doc:last-child{break-after:auto}
  .spse-kop img{max-height:42mm}
 }
+
+@media print{
+ #spse-preview .spse-org-head{font-size:10pt;border-bottom:2px solid #222;margin-bottom:10pt;padding-bottom:6pt}
+ #spse-preview .spse-org-head strong{font-size:13pt}
+ #spse-preview .spse-center{text-align:center!important;font-size:10pt!important}
+ #spse-preview .spse-data-table:not(.kv) th{background:#e7edf2!important;color:#111!important;text-align:center!important;font-weight:700!important}
+ #spse-preview .spse-data-table.kv td:first-child{background:#f2f5f7!important}
+ #spse-preview .spse-data-table tr{break-inside:avoid}
+}
+/* HPS workbook-template output: A4 table and dual signatory blocks. */
+.spse-data-table.spse-hps-table{font-size:9pt;table-layout:fixed;width:100%;margin:8px 0 20px;border-collapse:collapse}
+.spse-data-table.spse-hps-table th,.spse-data-table.spse-hps-table td{border:1px solid #333!important;padding:5px 4px!important;vertical-align:middle;overflow-wrap:anywhere;word-break:normal}
+.spse-data-table.spse-hps-table th{text-align:center!important;font-weight:700;background:#fff!important}
+.spse-data-table.spse-hps-table td:nth-child(1),.spse-data-table.spse-hps-table td:nth-child(3),.spse-data-table.spse-hps-table td:nth-child(4){text-align:center}
+.spse-sign-pair{margin:26px 0 12px;break-inside:avoid;page-break-inside:avoid;font-size:10pt;line-height:1.4}
+.spse-sign-pair-date{margin:0 0 12px}
+.spse-sign-pair-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:7%;}
+.spse-sign-pair-col{min-width:0}
+.spse-sign-pair-col .sign-head{font-weight:600}
+.spse-sign-pair-col .sp{height:58px}
+@media(max-width:620px){.spse-sign-pair-cols{gap:18px}.spse-data-table.spse-hps-table{font-size:8pt}}
+@media print{#spse-preview .spse-sign-pair{font-size:10pt;margin-top:24pt}.spse-data-table.spse-hps-table{font-size:8.5pt}.spse-data-table.spse-hps-table tr{break-inside:avoid;page-break-inside:avoid}}
 </style>
 </head>
 <body>
@@ -1027,10 +1058,10 @@ body.kkpp-lowfi,body.kkpp-lowfi main{background:#f3f6f8!important;background-ima
 <div id="spse-kop-status" class="small muted no-print" style="margin:2px 2px 10px"></div><div id="spse-ecat-banner" class="inline-alert info no-print spse-field-hidden" role="status"></div>
 <div class="no-print v5-formgrid-wrapper"><div class="spse-output-choice">
 <label for="spse-doc-type">Keluaran yang akan dibuat</label>
-<select data-spse id="spse-doc-type" onchange="updateSpseFormMode();saveSpseForm()"><option value="dpp_ep">DPP — e-purchasing/Katalog</option><option value="price_ep">HPS/Referensi Harga e-purchasing — data dari PPK</option><option value="review_pl">Berita Acara Reviu DPP — Pengadaan Langsung</option><option value="survey_pl">Hasil survei/perbandingan harga oleh PP</option><option value="mdp_pl">Dokumen Pemilihan Pengadaan Langsung — struktur MDP</option></select>
+<select data-spse id="spse-doc-type" onchange="updateSpseFormMode();saveSpseForm()"><option value="dpp_ep">DPP — e-purchasing/Katalog</option><option value="spek_ep">Spesifikasi Teknis Paket e-Purchasing</option><option value="price_ep">HPS/Referensi Harga e-purchasing — data dari PPK</option><option value="review_pl">Berita Acara Reviu DPP — Pengadaan Langsung</option><option value="survey_pl">Hasil survei/perbandingan harga oleh PP</option><option value="mdp_pl">Dokumen Pemilihan Pengadaan Langsung — struktur MDP</option></select>
 <p class="helper">Pilih keluaran terlebih dahulu. Bagian formulir yang tidak relevan akan disembunyikan tanpa menghapus data yang pernah dicatat.</p>
 </div><div class="v5-spse-grid">
-<div class="v5-spse-group" data-group="0" data-group-output-types="dpp_ep price_ep">
+<div class="v5-spse-group" data-group="0" data-group-output-types="dpp_ep price_ep spek_ep">
 <div class="v5-spse-group-head" style="--group-color:linear-gradient(135deg,#22D3EE,#3B82F6)">
 <div class="v5-spse-group-icon">🎯</div>
 <div>
@@ -1039,7 +1070,7 @@ body.kkpp-lowfi,body.kkpp-lowfi main{background:#f3f6f8!important;background-ima
 </div>
 </div>
 <div class="v5-spse-group-body formgrid">
-<div class="field v5-field third" data-output-types="dpp_ep price_ep"><label for="spse-ep-method">Metode e-purchasing</label><select data-spse="" id="spse-ep-method" onchange="saveSpseForm()"><option value="belum">Belum ditetapkan</option><option value="buy50">Pembelian langsung — kategori dengan batas sesuai matriks</option><option value="fixed">Pembelian langsung — kategori/produk harga tetap</option><option value="negotiation">Negosiasi harga</option><option value="mini">Mini-kompetisi</option></select><div class="helper">Batas PP berbeda menurut metode dan kategori; verifikasi konfigurasi Katalog aktif.</div></div><div class="field v5-field third" data-output-types="dpp_ep price_ep"><label for="spse-fixed">Harga tetap memenuhi pengecualian Pasal 13(3)?</label><select data-spse="" id="spse-fixed" onchange="saveSpseForm()"><option value="no">Tidak / belum dibuktikan</option><option value="yes">Ya — kategori dan metode pembelian langsung terverifikasi</option></select></div><div class="field v5-field third" data-output-types="dpp_ep price_ep"><label for="spse-value">Nilai paket/transaksi e-purchasing (Rp)</label><input data-spse="" id="spse-value" min="0" onchange="saveSpseForm()" placeholder="Nilai yang dipakai untuk pemeriksaan" step="1" type="number"/></div></div></div>
+<div class="field v5-field third" data-output-types="dpp_ep price_ep spek_ep"><label for="spse-ep-method">Metode e-purchasing</label><select data-spse="" id="spse-ep-method" onchange="saveSpseForm()"><option value="belum">Belum ditetapkan</option><option value="buy50">Pembelian langsung — kategori dengan batas sesuai matriks</option><option value="fixed">Pembelian langsung — kategori/produk harga tetap</option><option value="negotiation">Negosiasi harga</option><option value="mini">Mini-kompetisi</option></select><div class="helper">Batas PP berbeda menurut metode dan kategori; verifikasi konfigurasi Katalog aktif.</div></div><div class="field v5-field third" data-output-types="dpp_ep price_ep"><label for="spse-fixed">Harga tetap memenuhi pengecualian Pasal 13(3)?</label><select data-spse="" id="spse-fixed" onchange="saveSpseForm()"><option value="no">Tidak / belum dibuktikan</option><option value="yes">Ya — kategori dan metode pembelian langsung terverifikasi</option></select></div><div class="field v5-field third" data-output-types="dpp_ep price_ep"><label for="spse-value">Nilai paket/transaksi e-purchasing (Rp)</label><input data-spse="" id="spse-value" min="0" onchange="saveSpseForm()" placeholder="Nilai yang dipakai untuk pemeriksaan" step="1" type="number"/></div></div></div>
 <div class="v5-spse-group" data-group="1">
 <div class="v5-spse-group-head" style="--group-color:linear-gradient(135deg,#8B5CF6,#EC4899)">
 <div class="v5-spse-group-icon">📊</div>
@@ -1049,7 +1080,7 @@ body.kkpp-lowfi,body.kkpp-lowfi main{background:#f3f6f8!important;background-ima
 </div>
 </div>
 <div class="v5-spse-group-body formgrid">
-<div class="field v5-field third"><label for="spse-rup">Kode paket SiRUP</label><input data-spse="" id="spse-rup" maxlength="120" onchange="saveSpseForm()" placeholder="Kode RUP yang diumumkan"/></div><div class="field v5-field third"><label for="spse-id">ID paket/transaksi SPSE atau INAPROC (setelah dibuat)</label><input data-spse="" id="spse-id" maxlength="160" onchange="saveSpseForm()" placeholder="Isi setelah paket dibuat di sistem"/></div><div class="field v5-field third"><label for="spse-budget-ref">Referensi DIPA/DPA/anggaran</label><input data-spse="" id="spse-budget-ref" maxlength="200" onchange="saveSpseForm()" placeholder="Nomor/tahun/lokasi arsip"/></div><div class="field v5-field third"><label for="spse-ppk-price-ref">Nomor/tanggal HPS atau Referensi Harga dari PPK</label><input data-spse="" id="spse-ppk-price-ref" maxlength="200" onchange="saveSpseForm()" placeholder="Jangan dihitung/ditetapkan oleh PP"/></div><div class="field v5-field third" data-output-types="dpp_ep price_ep review_pl mdp_pl"><label for="spse-contract-ref">Referensi rancangan kontrak/bentuk kontrak</label><input data-spse="" id="spse-contract-ref" maxlength="200" onchange="saveSpseForm()" placeholder="Nomor versi atau lokasi file"/></div><div class="field v5-field third" data-output-types="mdp_pl"><label for="spse-mdp-version">Versi MDP/format instansi untuk PL</label><input data-spse="" id="spse-mdp-version" maxlength="200" onchange="saveSpseForm()" placeholder="Nomor, tanggal, sumber template resmi"/></div><div class="field v5-field full" data-output-types="price_ep"><label for="spse-hps-lines">Rincian item HPS/Referensi Harga dari PPK (satu baris per item; pisahkan dengan |)</label><textarea data-spse="" id="spse-hps-lines" onchange="saveSpseForm()" placeholder="No | uraian/spesifikasi | volume | satuan | harga satuan | jumlah | sumber/tanggal. Hanya salin dari perhitungan/dokumen PPK; verifikasi jumlah, pajak dan ongkos."></textarea></div></div></div>
+<div class="field v5-field third"><label for="spse-rup">Kode paket SiRUP</label><input data-spse="" id="spse-rup" maxlength="120" onchange="saveSpseForm()" placeholder="Kode RUP yang diumumkan"/></div><div class="field v5-field third"><label for="spse-id">ID paket/transaksi SPSE atau INAPROC (setelah dibuat)</label><input data-spse="" id="spse-id" maxlength="160" onchange="saveSpseForm()" placeholder="Isi setelah paket dibuat di sistem"/></div><div class="field v5-field third"><label for="spse-budget-ref">Referensi DIPA/DPA/anggaran</label><input data-spse="" id="spse-budget-ref" maxlength="200" onchange="saveSpseForm()" placeholder="Nomor/tahun/lokasi arsip"/></div><div class="field v5-field third"><label for="spse-ppk-price-ref">Nomor/tanggal HPS atau Referensi Harga dari PPK</label><input data-spse="" id="spse-ppk-price-ref" maxlength="200" onchange="saveSpseForm()" placeholder="Jangan dihitung/ditetapkan oleh PP"/></div><div class="field v5-field third" data-output-types="dpp_ep price_ep review_pl mdp_pl"><label for="spse-contract-ref">Referensi rancangan kontrak/bentuk kontrak</label><input data-spse="" id="spse-contract-ref" maxlength="200" onchange="saveSpseForm()" placeholder="Nomor versi atau lokasi file"/></div><div class="field v5-field third" data-output-types="mdp_pl"><label for="spse-mdp-version">Versi MDP/format instansi untuk PL</label><input data-spse="" id="spse-mdp-version" maxlength="200" onchange="saveSpseForm()" placeholder="Nomor, tanggal, sumber template resmi"/></div><div class="field v5-field full" data-output-types="price_ep"><label for="spse-hps-lines">Rincian HPS sesuai template instansi (satu item per baris)</label><textarea data-spse="" id="spse-hps-lines" onchange="saveSpseForm()" placeholder="Format utama: No | Jenis Barang/Jasa (termasuk spesifikasi) | Satuan | Vol | Harga Satuan | Pajak (%) | Keterangan&#10;Contoh: 1 | Perahu karet arung jeram seri Barong 380 | Set | 3 | 42792000 | 11% | 1 set termasuk kelengkapan. Total dihitung otomatis.&#10;Format lama 7 kolom tetap diterima untuk data yang sudah tersimpan."></textarea><div class="helper">Pajak dapat diisi sebagai tarif (misalnya 11%) atau nilai pajak rupiah dari dokumen PPK. Jika total dicantumkan dalam format 8 kolom, sistem memeriksa konsistensinya. Nilai HPS tetap harus cocok dengan dokumen yang ditetapkan PPK.</div></div></div></div>
 <div class="v5-spse-group" data-group="2">
 <div class="v5-spse-group-head" style="--group-color:linear-gradient(135deg,#14B8A6,#06B6D4)">
 <div class="v5-spse-group-icon">📝</div>
@@ -1059,6 +1090,27 @@ body.kkpp-lowfi,body.kkpp-lowfi main{background:#f3f6f8!important;background-ima
 </div>
 </div>
 <div class="v5-spse-group-body formgrid">
+<div class="field v5-field third" data-output-types="dpp_ep spek_ep price_ep"><label for="spse-doc-date">Tanggal dokumen</label><input data-spse="" id="spse-doc-date" type="date" onchange="saveSpseForm()"/></div>
+<div class="field v5-field third" data-output-types="dpp_ep"><label for="spse-doc-no-dpp">Nomor DPP</label><input data-spse="" id="spse-doc-no-dpp" maxlength="160" onchange="saveSpseForm()" placeholder="Nomor sesuai tata naskah dinas instansi"/></div>
+<div class="field v5-field third" data-output-types="spek_ep"><label for="spse-doc-no-spek">Nomor Spesifikasi Teknis</label><input data-spse="" id="spse-doc-no-spek" maxlength="160" onchange="saveSpseForm()" placeholder="Nomor sesuai tata naskah dinas instansi"/></div>
+<div class="field v5-field third" data-output-types="dpp_ep spek_ep"><label for="spse-program">Program</label><input data-spse="" id="spse-program" maxlength="300" onchange="saveSpseForm()" placeholder="Nama program sesuai dokumen anggaran"/></div>
+<div class="field v5-field third" data-output-types="dpp_ep spek_ep"><label for="spse-kegiatan">Kegiatan</label><input data-spse="" id="spse-kegiatan" maxlength="300" onchange="saveSpseForm()" placeholder="Nama kegiatan sesuai dokumen anggaran"/></div>
+<div class="field v5-field third" data-output-types="dpp_ep spek_ep"><label for="spse-sub-kegiatan">Sub Kegiatan</label><input data-spse="" id="spse-sub-kegiatan" maxlength="300" onchange="saveSpseForm()" placeholder="Nama subkegiatan sesuai dokumen anggaran"/></div>
+<div class="field v5-field full" data-output-types="dpp_ep spek_ep"><label for="spse-mata-anggaran">Mata Anggaran Belanja / Kode Rekening</label><input data-spse="" id="spse-mata-anggaran" maxlength="300" onchange="saveSpseForm()" placeholder="Kode rekening dan uraian belanja"/></div>
+<div class="field v5-field full" data-output-types="dpp_ep spek_ep"><label for="spse-spec-lines">Rincian barang/jasa untuk tabel DPP dan SPEK</label><textarea data-spse="" id="spse-spec-lines" onchange="saveSpseForm()" placeholder="Satu item per baris: No | Nama/Jenis Barang/Jasa | Spesifikasi | Qty | Satuan | Harga Satuan | Keterangan&#10;Contoh: 1 | Servis Kendaraan | BEARING RODA BELAKANG INNOVA | 1 | Pcs | 650000 | Sesuai katalog"></textarea><div class="helper">Isian yang sama digunakan pada tabel DPP dan tabel Spesifikasi Teknis. Harga satuan ditampilkan sebagaimana data yang dicatat; verifikasi terhadap katalog/dokumen PPK.</div></div>
+<div class="field v5-field full" data-output-types="dpp_ep spek_ep"><label for="spse-spec-brand-justification">Justifikasi teknis dalam penggunaan merek</label><textarea data-spse="" id="spse-spec-brand-justification" onchange="saveSpseForm()" placeholder="Contoh: Tidak menggunakan merek tertentu; menyesuaikan ketersediaan di Katalog Elektronik."></textarea></div>
+<div class="field v5-field" data-output-types="dpp_ep spek_ep"><label for="spse-spec-time">Spesifikasi waktu / jangka waktu pelaksanaan</label><textarea data-spse="" id="spse-spec-time" onchange="saveSpseForm()" placeholder="Durasi kalender, tanggal mulai/selesai, dan syarat jadwal sesuai dokumen PPK."></textarea></div>
+<div class="field v5-field" data-output-types="dpp_ep spek_ep"><label for="spse-spec-place">Spesifikasi tempat / lokasi pelaksanaan atau pengiriman</label><textarea data-spse="" id="spse-spec-place" onchange="saveSpseForm()" placeholder="Alamat/lokasi, akses, titik serah, dan ketentuan pengiriman."></textarea></div>
+<div class="field v5-field full" data-output-types="dpp_ep spek_ep"><label for="spse-spec-service">Spesifikasi tingkat layanan</label><textarea data-spse="" id="spse-spec-service" onchange="saveSpseForm()" placeholder="Ketepatan waktu, kesesuaian spesifikasi, kualitas, kuantitas, responsivitas, dan tindak lanjut ketidaksesuaian."></textarea></div>
+<div class="field v5-field" data-output-types="spek_ep"><label for="spse-catalog-url">Tautan E-Katalog</label><input data-spse="" id="spse-catalog-url" maxlength="1000" onchange="saveSpseForm()" placeholder="URL produk/etalase E-Katalog"/></div>
+<div class="field v5-field" data-output-types="spek_ep"><label for="spse-catalog-date">Tanggal akses E-Katalog</label><input data-spse="" id="spse-catalog-date" type="date" onchange="saveSpseForm()"/></div>
+<div class="field v5-field" data-output-types="dpp_ep spek_ep"><label for="spse-sign-place">Tempat penetapan/penandatanganan</label><input data-spse="" id="spse-sign-place" maxlength="120" onchange="saveSpseForm()" placeholder="Contoh: Putussibau"/></div>
+<div class="field v5-field" data-output-types="dpp_ep spek_ep"><label for="spse-ppk-nip">NIP PPK (jika ada)</label><input data-spse="" id="spse-ppk-nip" maxlength="40" onchange="saveSpseForm()" placeholder="NIP sesuai data kepegawaian"/></div>
+<div class="field v5-field third" data-output-types="price_ep"><label for="spse-hps-preparer-title">Jabatan penyusun HPS</label><input data-spse="" id="spse-hps-preparer-title" maxlength="160" onchange="saveSpseForm()" placeholder="Pejabat Pelaksana Teknis Kegiatan"/></div>
+<div class="field v5-field third" data-output-types="price_ep"><label for="spse-hps-preparer-name">Nama pejabat penyusun HPS</label><input data-spse="" id="spse-hps-preparer-name" maxlength="160" onchange="saveSpseForm()" placeholder="Nama sesuai data kepegawaian"/></div>
+<div class="field v5-field third" data-output-types="price_ep"><label for="spse-hps-preparer-rank">Pangkat/Golongan penyusun</label><input data-spse="" id="spse-hps-preparer-rank" maxlength="100" onchange="saveSpseForm()" placeholder="Contoh: Pembina/(IV/a)"/></div>
+<div class="field v5-field third" data-output-types="price_ep"><label for="spse-hps-preparer-nip">NIP penyusun HPS (jika ada)</label><input data-spse="" id="spse-hps-preparer-nip" maxlength="40" onchange="saveSpseForm()" placeholder="NIP sesuai data kepegawaian"/></div>
+<div class="field v5-field third" data-output-types="price_ep"><label for="spse-hps-ppk-rank">Pangkat/Golongan PPK</label><input data-spse="" id="spse-hps-ppk-rank" maxlength="100" onchange="saveSpseForm()" placeholder="Contoh: Pembina Utama Muda/(IV/c)"/></div>
 <div class="field v5-field full"><label for="spse-spec">Ringkasan kebutuhan, spesifikasi/KAK, volume/keluaran (sesuai DPP PPK)</label><textarea data-spse="" id="spse-spec" onchange="saveSpseForm()" placeholder="Masukkan ringkasan yang konsisten dengan dokumen PPK; tulis nomor versi dan tanggal."></textarea></div><div class="field v5-field full"><label for="spse-dpp-refs">Daftar dokumen DPP/lampiran dan nomor atau lokasi filenya</label><textarea data-spse="" id="spse-dpp-refs" onchange="saveSpseForm()" placeholder="Contoh: spesifikasi/KAK; dokumen anggaran; RUP; rancangan kontrak; HPS/Referensi Harga PPK bila diperlukan; analisis pasar."></textarea></div></div></div>
 <div class="v5-spse-group" data-group="3" data-group-output-types="review_pl survey_pl mdp_pl">
 <div class="v5-spse-group-head" style="--group-color:linear-gradient(135deg,#F59E0B,#EF4444)">
@@ -1083,13 +1135,13 @@ body.kkpp-lowfi,body.kkpp-lowfi main{background:#f3f6f8!important;background-ima
 <span class="badge" id="law-search-count" role="status" aria-live="polite" style="white-space:nowrap;">24 regulasi</span>
 </div>
 <div class="inline-alert warn">Jangan menganggap daftar ini sebagai inventaris seluruh produk hukum yang mungkin berlaku untuk semua kementerian/lembaga/pemerintah daerah. Peraturan sektoral, daerah, kebijakan internal, pendanaan, dan ketentuan yang terbit setelah tanggal verifikasi perlu diperiksa tersendiri.</div><div class="refs" id="regulations"></div></div></section>
-<section class="view" id="view-pengaturan" role="tabpanel" aria-labelledby="tab-pengaturan" tabindex="0"><div class="card"><div class="section-head"><div><h2>Pengaturan instansi</h2><div class="small muted">Kop surat yang diunggah di sini dipakai otomatis pada keluaran SPSE: pratinjau, Cetak/Simpan PDF, dan berkas DOCX.</div></div><button class="btn" type="button" onclick="go('spse')">Buka Output SPSE</button></div>
+<section class="view" id="view-pengaturan" role="tabpanel" aria-labelledby="tab-pengaturan" tabindex="0"><div class="card"><div class="section-head"><div><h2>Pengaturan instansi</h2><div class="small muted">Kop surat yang diunggah di sini dipakai otomatis pada keluaran SPSE: pratinjau, Cetak/Simpan PDF, dan berkas DOCX, termasuk template DPP dan Spesifikasi Teknis.</div></div><button class="btn" type="button" onclick="go('spse')">Buka Output SPSE</button></div>
 <div class="field"><label for="kop-file">Unggah kop surat (PNG / JPG / WebP, maks. 5 MB)</label><input id="kop-file" type="file" accept="image/png,image/jpeg,image/webp" onchange="kopUpload(this)"/><div class="helper">Gunakan gambar kop selebar halaman (disarankan ≥ 1200 px, latar putih). Tinggi maksimum saat dicetak 4,2 cm; gambar yang lebih tinggi diperkecil proporsional. Gambar dioptimalkan otomatis (maks. lebar 1600 px).</div></div>
-<div id="kop-status" class="inline-alert info" role="status" aria-live="polite">Belum ada kop surat. Unggah gambar kop untuk dipakai pada DPP dan HPS.</div>
+<div id="kop-status" class="inline-alert info" role="status" aria-live="polite">Belum ada kop surat. Unggah gambar kop untuk dipakai pada DPP, Spesifikasi Teknis, dan HPS.</div>
 <div id="kop-preview-box"><img id="kop-preview-img" alt="Pratinjau kop surat" hidden/><p id="kop-empty">Belum ada kop surat.</p></div>
 <div id="kop-meta" class="small muted"></div>
 <h3 style="margin:16px 0 4px;font-size:14px">Terapkan kop pada</h3>
-<div class="kop-apply"><label><input type="checkbox" id="kop-apply-dpp" onchange="kopApply()"/>DPP — e-purchasing/katalog</label><label><input type="checkbox" id="kop-apply-hps" onchange="kopApply()"/>HPS / Referensi Harga e-purchasing</label><label><input type="checkbox" id="kop-apply-pl" onchange="kopApply()"/>Dokumen Pengadaan Langsung (BA reviu DPP, hasil survei harga, struktur MDP)</label></div>
+<div class="kop-apply"><label><input type="checkbox" id="kop-apply-dpp" onchange="kopApply()"/>DPP dan Spesifikasi Teknis — e-purchasing/katalog</label><label><input type="checkbox" id="kop-apply-hps" onchange="kopApply()"/>HPS / Referensi Harga e-purchasing</label><label><input type="checkbox" id="kop-apply-pl" onchange="kopApply()"/>Dokumen Pengadaan Langsung (BA reviu DPP, hasil survei harga, struktur MDP)</label></div>
 <div class="bar no-print" style="margin-top:12px"><button class="btn" id="kop-remove" type="button" onclick="kopRemove()" disabled>Hapus kop surat</button></div>
 <div class="inline-alert warn"><strong>Penyimpanan lokal.</strong> Kop disimpan di browser perangkat ini, terpisah dari data paket; tidak ikut ekspor CSV, cadangan, atau transfer terenkripsi. Pada perangkat/browser lain atau setelah data browser dihapus, unggah ulang kop.</div></div></section>
 <section class="view" id="view-panduan" role="tabpanel" aria-labelledby="tab-panduan" tabindex="0"><div class="ops-map-slot" id="map-panduan"></div><div class="grid cols2"><div class="card"><h2>Ruang lingkup peran Pejabat Pengadaan</h2><div id="duties-content"></div></div><div class="card"><h2>Prinsip penggunaan</h2><ul class="list small"><li>Gunakan hanya setelah pejabat ditetapkan/ditugaskan dan kewenangannya diperiksa.</li><li>Pisahkan tugas PP, PPK, PA/KPA, Pokja Pemilihan, PPHP/Tim Pemeriksa, bendahara, dan pengelola sistem.</li><li>Checklist adalah alat kendali internal, bukan daftar syarat universal. Tandai “tidak relevan” hanya dengan alasan.</li><li>Hindari mengisi data sensitif yang tidak diperlukan. Penyimpanan lokal browser tidak terenkripsi oleh aplikasi.</li><li>Gunakan ekspor cadangan berkala; hasil ekspor JSON tidak terenkripsi dan hanya mencakup data aplikasi, bukan berkas bukti asli. Impor dapat mengganti atau menggabungkan data; tetap simpan salinan cadangan terpisah.</li><li>Dokumen yang dicetak merupakan draf internal. Verifikasi format, kewenangan tanda tangan, substansi, dan arsip pada sistem resmi.</li><li>Catat dasar keputusan, fakta yang diperiksa, waktu, dan rujukan dokumen. Jangan mengubah bukti asli.</li></ul></div><div class="card"><h2>Keamanan data dan pencadangan</h2><p class="small">Aplikasi tidak mengirim data ke server. Data paket disimpan di penyimpanan browser perangkat yang sedang digunakan. Orang lain yang memakai profil browser yang sama mungkin dapat melihat data tersebut. Aplikasi tidak mengenkripsi catatan.</p><div class="bar no-print"><button class="btn primary" onclick="exportBackup()">Ekspor backup JSON</button><button class="btn" onclick="document.getElementById('import-file').click()">Pulihkan backup</button></div></div><div class="card"><h2>Catatan pembaruan hukum</h2><div class="small muted" id="law-update-note"></div></div></div><div class="card" style="grid-column:1/-1"><h2>Matriks ambang nilai, metode, wilayah, dan bentuk kontrak</h2><p class="small muted">Matriks ini adalah indeks aturan untuk pemeriksaan awal. Baris rezim khusus hanya berlaku jika seluruh syarat ruang lingkupnya dibuktikan. Memilih wilayah Papua saja tidak cukup untuk menerapkan angka khusus.</p><div id="procurement-rules-matrix" aria-live="polite"><p class="small muted">Matriks dimuat saat aplikasi dibuka.</p></div></div></section>
@@ -1549,7 +1601,7 @@ function spseModel(c,t){const d=spseData(c),val=spseValue(c,d),role=spseRoleNote
 function spseCellHtml(v,header){return '<'+(header?'th':'td')+'>'+esc(v??'').replace(/\n/g,'<br>')+'</'+(header?'th':'td')+'>';}
 function spsePreflight(c,d,t){
  const issues=[],hard=[];
- const ep=['dpp_ep','price_ep'].includes(t),pl=['review_pl','survey_pl','mdp_pl'].includes(t);
+ const ep=['dpp_ep','spek_ep','price_ep'].includes(t),pl=['review_pl','survey_pl','mdp_pl'].includes(t);
  if((ep&&c.method!=='ep')||(pl&&c.method!=='pl'))hard.push('Jenis keluaran tidak sesuai metode paket yang tercatat ('+methodLabel(c.method)+'). Pilih keluaran yang sesuai atau koreksi data paket setelah verifikasi.');
  if(c.reviewStatus==='diblokir')hard.push('Status internal paket adalah “Tahan proses / eskalasi”. Selesaikan eskalasi terlebih dahulu.');
  if(t==='mdp_pl'&&['konstruksi','konsultansi_konstruksi'].includes(c.type))hard.push('Generator MDP ini belum dipastikan sesuai untuk paket konstruksi/konsultansi konstruksi. Gunakan model resmi yang berlaku dan jangan memakai struktur generik ini.');
@@ -1567,6 +1619,7 @@ function spsePreflight(c,d,t){
  if(!d['spse-dpp-refs'])issues.push('Daftar dokumen DPP/lampiran belum dicatat.');
  if(ep){if(d['spse-ep-method']==='belum')issues.push('Metode/kategori e-purchasing belum dipilih.');if(!d['spse-ppk-price-ref']&&!(d['spse-fixed']==='yes'&&d['spse-ep-method']==='fixed'))issues.push('Nomor/tanggal HPS atau Referensi Harga PPK belum dicatat.');}
  if(t==='price_ep'&&!d['spse-hps-lines'])issues.push('Rincian item harga yang disalin dari dokumen PPK belum dicatat.');
+ if(['dpp_ep','spek_ep'].includes(t)){if(!d['spse-spec-lines'])issues.push('Rincian item DPP/SPEK belum dicatat; tabel akan menampilkan penanda untuk dilengkapi.');if(!d['spse-program'])issues.push('Program belum dicatat.');if(!d['spse-kegiatan'])issues.push('Kegiatan belum dicatat.');if(!d['spse-sub-kegiatan'])issues.push('Sub Kegiatan belum dicatat.');if(!d['spse-mata-anggaran'])issues.push('Mata Anggaran Belanja/Kode Rekening belum dicatat.');if(!d['spse-spec-time'])issues.push('Spesifikasi waktu belum dicatat.');if(!d['spse-spec-place']&&!c.location)issues.push('Spesifikasi tempat/lokasi belum dicatat.');}
  if(t==='review_pl'){if(!d['spse-review'])issues.push('Temuan reviu DPP dan tindak lanjut belum dicatat.');if(!d['spse-ppk-price-ref'])issues.push('Referensi HPS/dasar harga dari PPK belum dicatat.');if(!d['spse-contract-ref'])issues.push('Referensi bentuk/rancangan kontrak belum dicatat.');}
  if(t==='survey_pl'){if(!d['spse-survey1'])issues.push('Sumber informasi harga pertama belum dicatat.');if(!d['spse-survey2'])issues.push('Sumber informasi harga kedua belum dicatat.');if(!d['spse-survey-conclusion'])issues.push('Kesimpulan perbandingan harga/kualitas belum dicatat.');}
  if(t==='mdp_pl'){if(!d['spse-mdp-version'])issues.push('Versi/sumber model dokumen pemilihan belum dicatat.');if(!d['spse-contract-ref'])issues.push('Referensi rancangan kontrak belum dicatat.');if(!d['spse-ppk-price-ref'])issues.push('Referensi HPS dari PPK belum dicatat.');if(!d['spse-misc'])issues.push('Jadwal/ketentuan tambahan dokumen pemilihan belum dicatat.');}
@@ -1592,7 +1645,7 @@ function downloadSpseDocx(){
  const type=document.getElementById('spse-doc-type').value,d=spseData(c),check=spsePreflight(c,d,type);renderSpseDoc();
  if(check.hard.length){alert('Keluaran tidak dibuat karena ada prasyarat yang menghalangi:\n\n• '+check.hard.join('\n• '));return;}
  if(check.issues.length&&!confirm('Masih ada '+check.issues.length+' catatan kelengkapan. Berkas akan tetap diberi status DRAF dan bukan dokumen resmi. Tetap unduh untuk telaah internal?\n\n• '+check.issues.join('\n• ')))return;
- const model=spseModel(c,type);const blob=makeDocxBlob(model);const safe=(c.name||'paket').normalize('NFKD').replace(/[^a-zA-Z0-9_-]+/g,'-').replace(/^-|-$/g,'').slice(0,60)||'paket';const labels={dpp_ep:'DPP-E-Purchasing',price_ep:'HPS-Referensi-Harga-PPK',review_pl:'BA-Reviu-DPP-PL',survey_pl:'Hasil-Survei-Harga-PP',mdp_pl:'Dokumen-Pemilihan-PL-MDP'};auditEvent(c,'Draf DOCX diunduh',labels[type]||type);persist();renderActivity(c);download(safe+'_'+(labels[type]||type)+'_DRAF.docx',blob,'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+ const model=spseModel(c,type);const blob=makeDocxBlob(model);const safe=(c.name||'paket').normalize('NFKD').replace(/[^a-zA-Z0-9_-]+/g,'-').replace(/^-|-$/g,'').slice(0,60)||'paket';const labels={dpp_ep:'DPP-E-Purchasing',spek_ep:'Spesifikasi-Teknis-E-Purchasing',price_ep:'HPS-Referensi-Harga-PPK',review_pl:'BA-Reviu-DPP-PL',survey_pl:'Hasil-Survei-Harga-PP',mdp_pl:'Dokumen-Pemilihan-PL-MDP'};auditEvent(c,'Draf DOCX diunduh',labels[type]||type);persist();renderActivity(c);download(safe+'_'+(labels[type]||type)+'_DRAF.docx',blob,'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
 }
 function printSpseDoc(){saveSpseForm();const el=document.getElementById('view-spse');document.querySelectorAll('.view').forEach(v=>v.classList.remove('print-active'));el.classList.add('print-active');window.print();setTimeout(()=>el.classList.remove('print-active'),300);}
 
@@ -2101,7 +2154,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 (function(){
 const KOP_KEY='kkpp_instansi_v1';
 const DEFAULT_APPLY={dpp_ep:true,price_ep:true,pl:false};
-const EP_TYPES=['dpp_ep','price_ep'],PL_TYPES=['review_pl','survey_pl','mdp_pl'];
+const EP_TYPES=['dpp_ep','spek_ep','price_ep'],PL_TYPES=['review_pl','survey_pl','mdp_pl'];
 const $=id=>document.getElementById(id);
 
 /* ---------- Penyimpanan pengaturan instansi (terpisah dari data paket) ---------- */
@@ -2120,7 +2173,7 @@ function writeInst(v){
  try{localStorage.setItem(KOP_KEY,JSON.stringify(v));return true;}
  catch(e){alert('Kop surat gagal disimpan: ruang penyimpanan browser penuh atau dibatasi. Coba gambar yang lebih kecil.');return false;}
 }
-function kopGroup(t){return t==='dpp_ep'?'dpp_ep':t==='price_ep'?'price_ep':'pl';}
+function kopGroup(t){return (t==='dpp_ep'||t==='spek_ep')?'dpp_ep':t==='price_ep'?'price_ep':'pl';}
 function kopFor(t){const s=readInst();return s.kop&&s.apply[kopGroup(t)]?s.kop:null;}
 
 /* ---------- Angka format Indonesia & analisis rincian HPS ---------- */
@@ -2133,25 +2186,211 @@ function idNum(s){
  if(/^\d+(\.\d+)?$/.test(s))return Number(s);
  return NaN;
 }
+function parseHpsTemplateLine(line,index){
+ const cells=String(line||'').split('|').map(x=>x.trim());
+ if(!cells.some(Boolean))return null;
+ const num=x=>idNum(x);
+ // Current workbook template: No | Jenis Barang/Jasa | Satuan | Vol | Harga | Pajak (%) | [Total] | Keterangan
+ // Seven columns calculate total; eight columns may provide a total to be checked.
+ const isTemplate=cells.length>=7&&!Number.isFinite(num(cells[2]))&&Number.isFinite(num(cells[3]));
+ if(isTemplate){
+  const no=cells[0]||String(index+1),name=cells[1]||'Uraian belum diisi',unit=cells[2]||'',vol=num(cells[3]),price=num(cells[4]);
+  const taxRaw=cells[5]||'';let taxRate=null,taxAmount=0,taxDisplay='—';
+  if(taxRaw){
+   if(/%/.test(taxRaw)){
+    const r=num(taxRaw.replace(/%/g,''));if(Number.isFinite(r)&&r>=0&&r<=100){taxRate=r;taxAmount=Math.round(vol*price*r/100);taxDisplay=new Intl.NumberFormat('id-ID',{maximumFractionDigits:2}).format(r)+'% / '+rupiah(taxAmount);}else taxDisplay=taxRaw;
+   }else{
+    const n=num(taxRaw);
+    if(Number.isFinite(n)&&n>=0){
+     if(n<=100){taxRate=n;taxAmount=Math.round(vol*price*n/100);taxDisplay=new Intl.NumberFormat('id-ID',{maximumFractionDigits:2}).format(n)+'% / '+rupiah(taxAmount);}
+     else {taxAmount=n;taxDisplay=rupiah(n);}
+    }else taxDisplay=taxRaw;
+   }
+  }
+  const base=Number.isFinite(vol)&&Number.isFinite(price)?vol*price:NaN;
+  const explicitTotal=cells.length>=8?num(cells[6]):NaN;
+  const total=Number.isFinite(explicitTotal)?explicitTotal:(Number.isFinite(base)?Math.round(base+taxAmount):NaN);
+  const note=cells.length>=8?cells.slice(7).join(' | '):cells.slice(6).join(' | ');
+  return {format:'template',no,name,unit,vol,price,taxRaw,taxRate,taxAmount,taxDisplay,base,total,explicitTotal,note,line:index+1};
+ }
+ // Legacy layout from earlier app versions: No | uraian | volume | satuan | harga satuan | jumlah | sumber/tanggal
+ const no=cells[0]||String(index+1),name=cells[1]||'Uraian belum diisi',vol=num(cells[2]),unit=cells[3]||'',price=num(cells[4]),explicitTotal=num(cells[5]);
+ const base=Number.isFinite(vol)&&Number.isFinite(price)?vol*price:NaN;
+ return {format:'legacy',no,name,unit,vol,price,taxRaw:'',taxRate:null,taxAmount:0,taxDisplay:'—',base,total:Number.isFinite(explicitTotal)?explicitTotal:base,explicitTotal,note:cells.slice(6).join(' | '),line:index+1};
+}
+function parseHpsTemplateRows(text){
+ return String(text||'').split(/\r?\n/).map((line,i)=>parseHpsTemplateLine(line,i)).filter(Boolean);
+}
 function hpsAnalysis(text){
  const out={rows:0,numeric:0,total:0,issues:[]};
- String(text||'').split(/\r?\n/).forEach((line,i)=>{
-  const cells=line.split('|').map(x=>x.trim());
-  if(!cells.some(Boolean))return;
+ parseHpsTemplateRows(text).forEach(r=>{
   out.rows++;
-  if(cells.length<6){out.issues.push('baris '+(i+1)+' hanya '+cells.length+' kolom (perlu: No | uraian | volume | satuan | harga satuan | jumlah | sumber).');return;}
-  const vol=idNum(cells[2]),price=idNum(cells[4]),amt=idNum(cells[5]);
-  if([vol,price,amt].some(Number.isNaN)){out.issues.push('baris '+(i+1)+': volume/harga satuan/jumlah tidak terbaca sebagai angka.');return;}
-  out.numeric++;out.total+=amt;
-  if(Math.abs(vol*price-amt)>1)out.issues.push('baris '+(i+1)+': volume × harga satuan = '+rupiah(Math.round(vol*price))+', berbeda dari jumlah '+rupiah(amt)+'.');
+  if(!Number.isFinite(r.vol)||!Number.isFinite(r.price)||!Number.isFinite(r.total)){
+   out.issues.push('baris '+r.line+': volume, harga satuan, atau total tidak terbaca sebagai angka.');return;
+  }
+  out.numeric++;out.total+=r.total;
+  if(r.format==='template'){
+   const expected=Math.round(r.base+r.taxAmount);
+   if(Number.isFinite(r.explicitTotal)&&Math.abs(expected-r.explicitTotal)>1)out.issues.push('baris '+r.line+': total '+rupiah(r.explicitTotal)+' berbeda dari volume × harga ditambah pajak ('+rupiah(expected)+').');
+  }else if(Math.abs(r.vol*r.price-r.total)>1){
+   out.issues.push('baris '+r.line+': volume × harga satuan = '+rupiah(Math.round(r.vol*r.price))+', berbeda dari jumlah '+rupiah(r.total)+'.');
+  }
  });
  return out;
 }
 
-/* ---------- Model dokumen: label metode, tabel kunci-nilai, total HPS, tanda tangan, kop ---------- */
+/* ---------- Model dokumen: template DPP dan Spesifikasi Teknis mengikuti contoh PDF instansi ---------- */
 const baseModel=window.spseModel;
+function formatSpseDate(value){
+ if(!value)return new Date().toLocaleDateString('id-ID',{day:'2-digit',month:'long',year:'numeric'});
+ const d=new Date(String(value)+'T12:00:00');
+ return Number.isNaN(d.getTime())?String(value):d.toLocaleDateString('id-ID',{day:'2-digit',month:'long',year:'numeric'});
+}
+function specRowsForOutput(d){
+ const text=String(d['spse-spec-lines']||'').trim();
+ if(!text)return [];
+ return text.split(/\r?\n/).map((line,i)=>{
+  const cells=line.split('|').map(x=>x.trim());
+  if(!cells.some(Boolean))return null;
+  // Format utama: No | Nama/Jenis | Spesifikasi | Qty | Satuan | Harga Satuan | Keterangan
+  if(cells.length>=6){
+   const no=cells[0]||String(i+1),name=cells[1]||'Uraian belum diisi',spec=cells[2]||'',qty=cells[3]||'',unit=cells[4]||'',rawPrice=cells[5]||'',note=cells.slice(6).join(' | ');
+   let price=rawPrice;
+   if(rawPrice){const n=typeof idNum==='function'?idNum(rawPrice):Number(rawPrice);if(Number.isFinite(n))price=rupiah(n);}
+   return {no,name,spec,qty,unit,price,note};
+  }
+  // Format ringkas yang lebih lama: No | Uraian/Spesifikasi | Qty | Satuan | Harga Satuan
+  if(cells.length>=5){
+   const rawPrice=cells[4]||'';let price=rawPrice;const n=typeof idNum==='function'?idNum(rawPrice):Number(rawPrice);if(rawPrice&&Number.isFinite(n))price=rupiah(n);
+   return {no:cells[0]||String(i+1),name:cells[1]||'Uraian belum diisi',spec:'',qty:cells[2]||'',unit:cells[3]||'',price,note:''};
+  }
+  return {no:String(i+1),name:cells[0]||'Uraian belum diisi',spec:cells.slice(1).join(' | '),qty:'',unit:'',price:'',note:''};
+ }).filter(Boolean);
+}
+function defaultText(value,fallback){return String(value||'').trim()||fallback;}
+function templateMethodLabel(d){
+ const v=d['spse-ep-method']||'belum';
+ const map={belum:'Belum ditetapkan',buy50:'Pembelian langsung — kategori dengan batas sesuai matriks',fixed:'Pembelian langsung — kategori/produk harga tetap',negotiation:'Negosiasi Harga',mini:'Mini-Kompetisi'};
+ return map[v]||v;
+}
+function templateMetadata(c,d,includeDate){
+ const rows=[];
+ if(includeDate)rows.push(['Tanggal',formatSpseDate(d['spse-doc-date'])]);
+ rows.push(
+  ['Perangkat Daerah',c.satker||'Belum diisi'],
+  ['Program',d['spse-program']||'Belum diisi'],
+  ['Kegiatan',d['spse-kegiatan']||'Belum diisi'],
+  ['Sub Kegiatan',d['spse-sub-kegiatan']||'Belum diisi'],
+  ['RUP',d['spse-rup']||c.rupId||'Belum dicatat'],
+  ['Nama Paket Pengadaan',c.name||'Belum diisi'],
+  ['Pagu Dana',rupiah(c.amount)],
+  ['Mata Anggaran Belanja',d['spse-mata-anggaran']||'Belum diisi'],
+  ['Sumber Dana',c.budget||'Belum dicatat']
+ );
+ return rows;
+}
+function specTableRows(items,d,c){
+ const rows=[['No','Elemen Spesifikasi','Nama Barang dan Spesifikasi','Qty','Satuan','Harga Satuan','Ket.']];
+ if(items.length){items.forEach(it=>rows.push([it.no,'Jenis, Spesifikasi, Kuantitas, Satuan dan Harga',it.name+(it.spec?'\nSpesifikasi: '+it.spec:''),it.qty,it.unit,it.price,it.note]));}
+ else rows.push(['1','Jenis, Spesifikasi, Kuantitas, Satuan dan Harga','Rincian barang/jasa belum diisi. Lengkapi bagian “Rincian barang/jasa untuk tabel DPP dan SPEK” berdasarkan DPP/katalog yang diverifikasi.','','','','']);
+ rows.push(['2','Tempat',defaultText(d['spse-spec-place'],c.location||'Belum ditetapkan; lengkapi lokasi pelaksanaan/pengiriman.'),'','','','']);
+ rows.push(['3','Waktu',defaultText(d['spse-spec-time'],'Belum ditetapkan; lengkapi jangka waktu dan tanggal pelaksanaan.'),'','','','']);
+ rows.push(['4','Tingkat Layanan',defaultText(d['spse-spec-service'],'Penyedia wajib memenuhi ketepatan waktu, kesesuaian spesifikasi, kualitas hasil, ketepatan jumlah, responsivitas, serta menindaklanjuti ketidaksesuaian melalui perbaikan atau penggantian tanpa biaya tambahan.'),'','','','']);
+ return rows;
+}
+function buildDppOrSpecModel(c,t,d){
+ const B=[],add=(type,text,rows,extra={})=>B.push(Object.assign({type,text,rows},extra));
+ const items=specRowsForOutput(d),today=formatSpseDate(d['spse-doc-date']);
+ const signPlace=defaultText(d['spse-sign-place'],'Putussibau');
+ const ppk=c.ppk||'................................................';
+ const nip=d['spse-ppk-nip']?'NIP. '+d['spse-ppk-nip']:'NIP. ................................................';
+ const brand=defaultText(d['spse-spec-brand-justification'],'Tidak menggunakan merek tertentu / menyesuaikan ketersediaan di Katalog Elektronik.');
+ const place=defaultText(d['spse-spec-place'],c.location||'Belum ditetapkan; lengkapi lokasi pelaksanaan/pengiriman.');
+ const time=defaultText(d['spse-spec-time'],'Belum ditetapkan; lengkapi jangka waktu, tanggal mulai dan tanggal selesai.');
+ const service=defaultText(d['spse-spec-service'],'Penyedia wajib memenuhi tingkat layanan meliputi ketepatan waktu, kesesuaian spesifikasi, kualitas hasil, ketepatan jumlah, responsivitas, pengemasan, serta menindaklanjuti setiap ketidaksesuaian melalui perbaikan atau penggantian tanpa biaya tambahan.');
+ const method=templateMethodLabel(d);
+ const dppNo=defaultText(d['spse-doc-no-dpp'],'[diisi sesuai penomoran instansi]');
+ const spekNo=defaultText(d['spse-doc-no-spek'],'[diisi sesuai penomoran instansi]');
+ const catalogUrl=defaultText(d['spse-catalog-url'],c.catalog||'Belum dicatat');
+ const catalogDate=d['spse-catalog-date']?formatSpseDate(d['spse-catalog-date']):'Belum dicatat';
+ const kop=kopFor(t);
+ if(kop)add('kop','',null,{kop});
+ else add('orghead','',null,{lines:['PEMERINTAH KABUPATEN KAPUAS HULU',c.satker||'PERANGKAT DAERAH']});
+ if(t==='dpp_ep'){
+  add('title','DOKUMEN PERSIAPAN PENGADAAN (DPP) E-PURCHASING');
+  add('center','Nomor: '+dppNo);
+  add('table','',templateMetadata(c,d,true),{kv:true,widths:[30,70]});
+  add('heading','I. Spesifikasi Teknis');
+  add('p','Penyusunan spesifikasi teknis telah menguraikan kesesuaian dengan kebutuhan, karakteristik barang (ukuran, dimensi, komposisi), kinerja, standar yang digunakan (SNI/ISO bila relevan), pengepakan/pengiriman, aspek layanan (waktu dan responsivitas), serta higienitas dan keamanan untuk penggunaan maupun pengadaan.');
+  add('heading','a. Spesifikasi Jenis, Mutu Barang/Bahan/Material, Jumlah, Satuan dan Harga');
+  add('table','',[['No','Nama/Jenis Barang Spesifikasi Mutu/Bahan/Material','Qty','Satuan','Harga Satuan'],...(items.length?items.map(it=>[it.no,it.name+(it.spec?'\nSpesifikasi: '+it.spec:''),it.qty,it.unit,it.price]):[['1','Rincian barang/jasa belum diisi. Lengkapi data berdasarkan DPP dan Katalog yang diverifikasi.','','','']])],{widths:[7,55,10,10,18]});
+  add('heading','b. Justifikasi Teknis Dalam Penggunaan Merek');
+  add('p',brand);
+  add('heading','c. Spesifikasi Waktu');add('p',time);
+  add('heading','d. Spesifikasi Tempat');add('p',place);
+  add('heading','e. Spesifikasi Layanan');add('p',service);
+  add('heading','II. Prioritas Penggunaan Produk Dalam Negeri');
+  add('p','Berdasarkan Peraturan Presiden Nomor 46 Tahun 2025 tentang Perubahan Kedua atas Peraturan Presiden Nomor 16 Tahun 2018 tentang Pengadaan Barang/Jasa Pemerintah, PPK memilih barang/jasa pada Katalog Elektronik dengan memprioritaskan Produk Dalam Negeri (PDN) yang memiliki nilai TKDN sesuai dengan ketentuan peraturan perundang-undangan.');
+  add('heading','III. Prioritas Penggunaan Produk dari Penyedia dengan Kualifikasi Usaha Kecil serta Koperasi');
+  add('p','Berdasarkan Pasal 65 Peraturan Presiden Nomor 46 Tahun 2025, untuk paket pengadaan barang/jasa dengan nilai pagu anggaran sampai dengan Rp15.000.000.000,00 (lima belas miliar rupiah), PPK memilih Penyedia dengan memperhatikan Usaha Kecil atau Koperasi pada aplikasi Katalog Elektronik, sesuai ketentuan yang berlaku.');
+  add('heading','IV. Pengumpulan Referensi Harga');
+  add('p','PPK mempersiapkan referensi harga yang bersumber dari Katalog Elektronik maupun harga pembanding produk sejenis di luar sistem sebagai dasar acuan untuk melakukan Negosiasi Harga, kecuali untuk produk yang memenuhi ketentuan harga tetap. '+(d['spse-ppk-price-ref']?'Referensi dokumen harga PPK: '+d['spse-ppk-price-ref']+'.':''));
+  add('heading','V. Rancangan Kontrak');
+  add('p','Rancangan kontrak menggunakan Surat Pesanan (SP) sesuai yang tertuang pada aplikasi E-Purchasing. '+(d['spse-contract-ref']?'Referensi rancangan kontrak/bentuk kontrak: '+d['spse-contract-ref']+'.':''));
+  add('heading','VI. Rencana Metode Pemilihan Penyedia');
+  add('p','Rencana metode pemilihan penyedia Katalog Elektronik menggunakan metode: '+method+'.');
+  add('heading','VII. Penutup');
+  add('p','Demikian Dokumen Persiapan Pengadaan e-Purchasing ini dibuat untuk diketahui bersama sebagai acuan bagi pelaksanaan proses pengadaan barang/jasa bagi pihak terkait.');
+  add('note','Catatan penyesuaian template: kalimat rujukan peraturan mengikuti contoh yang dilampirkan dan wajib diverifikasi kembali terhadap ketentuan yang berlaku sebelum ditetapkan.');
+  add('sign','',null,{lines:[signPlace+', '+today,'Ditetapkan oleh:','Pejabat Pembuat Komitmen','',''+ppk,nip]});
+ }else{
+  add('title','SPESIFIKASI TEKNIS PAKET E-PURCHASING');
+  add('center','Nomor: '+spekNo);
+  add('table','',templateMetadata(c,d,false),{kv:true,widths:[30,70]});
+  add('table','',specTableRows(items,d,c),{widths:[6,20,44,7,8,10,5]});
+  add('p','Link E-Catalog: '+catalogUrl);
+  add('p','Diakses tanggal: '+catalogDate);
+  add('sign','',null,{lines:[signPlace+', '+today,'Ditetapkan oleh:','Pejabat Pembuat Komitmen','',''+ppk,nip]});
+ }
+ return {title:t==='dpp_ep'?'DPP E-Purchasing':'Spesifikasi Teknis Paket E-Purchasing',blocks:B};
+}
+function buildHpsTemplateModel(c,d){
+ const B=[],add=(type,text,rows,extra={})=>B.push(Object.assign({type,text,rows},extra));
+ const today=formatSpseDate(d['spse-doc-date']);
+ const signPlace=defaultText(d['spse-sign-place'],'Putussibau');
+ const org=c.satker||'Perangkat Daerah';
+ const rows=parseHpsTemplateRows(d['spse-hps-lines']);
+ const tableRows=[['No','Jenis Barang/Jasa','Satuan','Vol','Harga','Pajak (%)','Total','Keterangan']];
+ if(rows.length){
+  rows.forEach(r=>tableRows.push([
+   r.no,
+   r.name,
+   r.unit,
+   Number.isFinite(r.vol)?new Intl.NumberFormat('id-ID',{maximumFractionDigits:3}).format(r.vol):String(r.vol||''),
+   Number.isFinite(r.price)?rupiah(r.price):String(r.price||''),
+   r.taxDisplay,
+   Number.isFinite(r.total)?rupiah(r.total):'Perlu dilengkapi',
+   r.note||''
+  ]));
+ }else tableRows.push(['1','Rincian HPS belum diisi. Masukkan item berdasarkan perhitungan/dokumen PPK.','','','','','','']);
+ const kop=kopFor('price_ep');
+ if(kop)add('kop','',null,{kop});
+ else add('orghead','',null,{lines:['PEMERINTAH KABUPATEN KAPUAS HULU',org]});
+ add('title','RINCIAN HARGA PERKIRAAN SENDIRI (HPS)');
+ add('table','',tableRows,{className:'spse-hps-table',widths:[4,29,7,5,14,13,14,14]});
+ add('signPair','',null,{columns:[
+  [ 'Disusun Oleh:', defaultText(d['spse-hps-preparer-title'],'Pejabat Pelaksana Teknis Kegiatan'), org, '', '', defaultText(d['spse-hps-preparer-name'],'................................................'), defaultText(d['spse-hps-preparer-rank'],'................................................'), d['spse-hps-preparer-nip']?'NIP. '+d['spse-hps-preparer-nip']:'NIP. ................................................' ],
+  [ 'Ditetapkan Oleh:', 'Pejabat Pembuat Komitmen', org, '', '', c.ppk||'................................................', d['spse-hps-ppk-rank']||'', d['spse-ppk-nip']?'NIP. '+d['spse-ppk-nip']:'NIP. ................................................' ]
+ ],placeDate:signPlace+', '+today});
+ add('note','Catatan: kolom “Pajak (%)” mengikuti label pada template yang dilampirkan. Untuk input berupa tarif, keluaran menampilkan tarif dan nilai pajak rupiahnya; untuk input berupa nilai pajak rupiah, keluaran menampilkan nilai tersebut. Pastikan cara pengenaan pajak dan total akhir sesuai dokumen sumber yang diverifikasi/ditetapkan PPK.');
+ return {title:'Rincian Harga Perkiraan Sendiri (HPS)',blocks:B};
+}
+
 window.spseModel=function(c,t){
- const m=baseModel(c,t),d=c.spseData||{};
+ const d=c.spseData||{};
+ if(t==='dpp_ep'||t==='spek_ep')return buildDppOrSpecModel(c,t,d);
+ if(t==='price_ep')return buildHpsTemplateModel(c,d);
+ const m=baseModel(c,t);
  const epLabel=v=>{const o=[...document.querySelectorAll('#spse-ep-method option')].find(x=>x.value===v);return o?o.textContent:v;};
  m.blocks.forEach(b=>{
   if(b.type!=='table')return;
@@ -2163,12 +2402,11 @@ window.spseModel=function(c,t){
   }
  });
  m.blocks=m.blocks.map(b=>{
-  if(b.type==='p'&&/^Disiapkan\/ditetapkan PPK:/.test(b.text)&&(t==='dpp_ep'||t==='price_ep'))
+  if(b.type==='p'&&/^Disiapkan\/ditetapkan PPK:/.test(b.text)&&(t==='price_ep'))
    return {type:'sign',lines:['Disiapkan/ditetapkan oleh PPK,','','','',c.ppk||'____________________','Tanggal: ____________________']};
   return b;
  });
- const kop=kopFor(t);
- if(kop)m.blocks.unshift({type:'kop',kop});
+ const kop=kopFor(t);if(kop)m.blocks.unshift({type:'kop',kop});
  return m;
 };
 
@@ -2176,12 +2414,15 @@ window.spseModel=function(c,t){
 function blocksHtml(blocks){
  return blocks.map(b=>{
   if(b.type==='kop')return '<div class="spse-kop"><img alt="Kop surat instansi" src="'+b.kop.dataUrl+'"></div>';
+  if(b.type==='orghead')return '<div class="spse-org-head"><div>'+esc(b.lines?.[0]||'PEMERINTAH KABUPATEN KAPUAS HULU')+'</div><strong>'+esc(b.lines?.[1]||'PERANGKAT DAERAH')+'</strong></div>';
   if(b.type==='title')return '<h1>'+esc(b.text)+'</h1>';
+  if(b.type==='center')return '<p class="spse-center">'+esc(b.text).replace(/\n/g,'<br>')+'</p>';
   if(b.type==='heading')return '<h2>'+esc(b.text)+'</h2>';
   if(b.type==='p')return '<p>'+esc(b.text).replace(/\n/g,'<br>')+'</p>';
   if(b.type==='note')return '<p style="font-size:10px;color:#555;border-left:3px solid #d8bd68;padding-left:8px">'+esc(b.text).replace(/\n/g,'<br>')+'</p>';
-  if(b.type==='table')return '<table class="'+(b.kv?'kv':'')+'"><tbody>'+b.rows.map((r,i)=>'<tr>'+r.map(v=>spseCellHtml(v,!b.kv&&i===0)).join('')+'</tr>').join('')+'</tbody></table>';
+  if(b.type==='table'){const cols=b.widths?'<colgroup>'+b.widths.map(w=>'<col style="width:'+Number(w)+'%">').join('')+'</colgroup>':'';return '<table class="spse-data-table '+(b.kv?'kv ':'')+esc(b.className||'')+'">'+cols+'<tbody>'+b.rows.map((r,i)=>'<tr>'+r.map(v=>spseCellHtml(v,!b.kv&&i===0)).join('')+'</tr>').join('')+'</tbody></table>'; }
   if(b.type==='sign')return '<div class="spse-sign">'+b.lines.map(l=>l?'<div>'+esc(l)+'</div>':'<div class="sp"></div>').join('')+'</div>';
+  if(b.type==='signPair')return '<div class="spse-sign-pair"><div class="spse-sign-pair-date">'+esc(b.placeDate||'')+'</div><div class="spse-sign-pair-cols">'+(b.columns||[]).map(col=>'<div class="spse-sign-pair-col">'+col.map((l,i)=>l?'<div'+(i===0?' class="sign-head"':'')+'>'+esc(l)+'</div>':'<div class="sp"></div>').join('')+'</div>').join('')+'</div></div>';
   return '';
  }).join('');
 }
@@ -2211,7 +2452,7 @@ function updateEcatBanner(c){
  const fixedEx=d['spse-fixed']==='yes'&&d['spse-ep-method']==='fixed';
  const price=spsePriceRule(c,d);
  b.classList.remove('spse-field-hidden');
- b.innerHTML='<strong>Paket e-katalog (e-purchasing).</strong> Keluaran yang relevan: DPP'+(fixedEx?' saja — HPS/Referensi Harga ditandai dikecualikan (harga tetap).':' dan dokumen harga ('+esc(price.label)+').')+'<div class="bar" style="margin-top:8px"><button type="button" class="btn primary" onclick="printSpseBundle()">Cetak DPP'+(fixedEx?'':' + HPS')+'</button></div>';
+ b.innerHTML='<strong>Paket e-katalog (e-purchasing).</strong> Keluaran yang relevan: DPP dan Spesifikasi Teknis paket. Dokumen harga ('+esc(price.label)+') mengikuti data PPK dan ketentuan yang diverifikasi.'+'<div class="bar" style="margin-top:8px"><button type="button" class="btn primary" onclick="printSpseDppSpecBundle()">Cetak DPP + SPEK</button><button type="button" class="btn" onclick="printSpseBundle()">Cetak DPP + HPS</button></div>';
 }
 function updateKopStatus(){
  const el=$('spse-kop-status');if(!el)return;
@@ -2248,15 +2489,51 @@ function doPrint(bundle){
  setTimeout(done,1500);
 }
 window.printSpseDoc=function(){
- saveSpseForm();
- const c=activeCase();if(!c){alert('Buka paket terlebih dahulu.');return;}
- const type=$('spse-doc-type').value,pf=spsePreflight(c,spseData(c),type);
+ // Sinkronkan nilai form langsung ke paket aktif sebelum membuat model cetak.
+ // Ini menghindari preview/cetakan memakai snapshot lama ketika pengguna langsung menekan Cetak.
+ const c=activeCase();if(!c){alert('Pilih/buka paket terlebih dahulu.');return;}
+ c.spseData=c.spseData||{};
+ document.querySelectorAll('#view-spse [data-spse]').forEach(el=>{c.spseData[el.id]=el.value;});
+ c.rupId=String(c.spseData['spse-rup']||c.rupId||'');c.spseId=String(c.spseData['spse-id']||c.spseId||'');
+ const type=$('spse-doc-type')?.value||'dpp_ep';
+ if(['dpp_ep','spek_ep'].includes(type)&&!c.spseData['spse-spec']?.trim()){
+  const ok=confirm('Ringkasan spesifikasi/KAK masih kosong. Dokumen akan mencantumkan penanda bahwa spesifikasi harus dilengkapi dari dokumen DPP PPK. Tetap lanjut untuk telaah draf?');
+  if(!ok)return;
+ }
+ if(!persist()){alert('Data paket tidak berhasil disimpan. Cetak dibatalkan agar dokumen tidak memakai data yang belum tersimpan.');return;}
+ const pf=spsePreflight(c,spseData(c),type);
  renderSpseDoc();
+ // Pastikan model final dibangun setelah sinkronisasi dan preview selesai diperbarui.
+ const finalHtml=blocksHtml(spseModel(c,type).blocks);
+ $('spse-preview').innerHTML=finalHtml;
  if(pf.hard.length){alert('Keluaran tidak dicetak karena ada prasyarat yang menghalangi:\n\n• '+pf.hard.join('\n• '));return;}
  if(pf.issues.length&&!confirm('Masih ada '+pf.issues.length+' catatan kelengkapan. Hasil cetak tetap berstatus DRAF. Tetap cetak?\n\n• '+pf.issues.slice(0,10).join('\n• ')))return;
  auditEvent(c,'Cetak keluaran SPSE',type);persist();renderActivity(c);
  doPrint(false);
 };
+window.printSpseDppSpecBundle=function(){
+ const c=activeCase();if(!c){alert('Pilih/buka paket terlebih dahulu.');return;}
+ if(c.method!=='ep'){alert('Cetak DPP + SPEK hanya untuk paket dengan metode E-purchasing. Metode paket ini: '+methodLabel(c.method)+'.');return;}
+ c.spseData=c.spseData||{};
+ document.querySelectorAll('#view-spse [data-spse]').forEach(el=>{c.spseData[el.id]=el.value;});
+ c.rupId=String(c.spseData['spse-rup']||c.rupId||'');c.spseId=String(c.spseData['spse-id']||c.spseId||'');
+ if(!persist()){alert('Data keluaran gagal disimpan. Pencetakan dibatalkan.');return;}
+ const d=spseData(c),parts=[],skipped=[];
+ [['dpp_ep','DPP'],['spek_ep','Spesifikasi Teknis']].forEach(([t,l])=>{
+  const pf=spsePreflight(c,d,t);
+  if(pf.hard.length)skipped.push(l+': '+pf.hard.join(' '));else parts.push({t,l,pf});
+ });
+ if(!parts.length){alert('Tidak ada dokumen yang dapat dicetak:\n\n• '+skipped.join('\n• '));return;}
+ const issues=[...new Set(parts.flatMap(p=>p.pf.issues))];
+ if(issues.length||skipped.length){
+  const msg=(skipped.length?'Tidak dicetak:\n• '+skipped.join('\n• ')+'\n\n':'')+(issues.length?'Masih ada '+issues.length+' catatan kelengkapan (hasil tetap berstatus DRAF):\n• '+issues.slice(0,12).join('\n• ')+(issues.length>12?'\n• …':'')+'\n\n':'')+'Lanjut mencetak '+parts.map(p=>p.l).join(' + ')+'?';
+  if(!confirm(msg))return;
+ }
+ $('spse-bundle').innerHTML=parts.map(p=>'<div class="docpreview spse-print-doc">'+blocksHtml(spseModel(c,p.t).blocks)+'</div>').join('');
+ auditEvent(c,'Cetak gabungan DPP + Spesifikasi Teknis','Template dokumen disusun mengikuti contoh DPP/SPEK yang dilampirkan.');persist();renderActivity(c);
+ doPrint(true);
+};
+
 window.printSpseBundle=function(){
  saveSpseForm();
  const c=activeCase();if(!c){alert('Buka paket terlebih dahulu.');return;}
@@ -2287,10 +2564,10 @@ window.makeDocxBlob=function(model){
   return '<w:p>'+(ppr?'<w:pPr>'+ppr+'</w:pPr>':'')+runs+'</w:p>';
  };
  const SPACER='<w:p><w:pPr><w:spacing w:after="60"/></w:pPr></w:p>';
- const widthsFor=(n,kv)=>{if(kv)return [3000,TW-3000];if(n===7)return [500,2500,900,900,1500,1700,TW-8000];const w=Math.floor(TW/n);return Array.from({length:n},(_,i)=>i===n-1?TW-w*(n-1):w);};
+ const widthsFor=(n,kv,custom)=>{if(Array.isArray(custom)&&custom.length===n&&custom.every(x=>Number.isFinite(Number(x))&&Number(x)>0)){const total=custom.reduce((a,b)=>a+Number(b),0),vals=custom.map(x=>Math.round(TW*Number(x)/total));vals[vals.length-1]+=TW-vals.reduce((a,b)=>a+b,0);return vals;}if(kv)return [3000,TW-3000];if(n===7)return [500,2500,900,900,1500,1700,TW-8000];const w=Math.floor(TW/n);return Array.from({length:n},(_,i)=>i===n-1?TW-w*(n-1):w);};
  const bd='<w:tblBorders><w:top w:val="single" w:sz="4" w:color="7F8C99"/><w:left w:val="single" w:sz="4" w:color="7F8C99"/><w:bottom w:val="single" w:sz="4" w:color="7F8C99"/><w:right w:val="single" w:sz="4" w:color="7F8C99"/><w:insideH w:val="single" w:sz="4" w:color="B9C4CE"/><w:insideV w:val="single" w:sz="4" w:color="B9C4CE"/></w:tblBorders>';
- const table=(rows,kv)=>{
-  const n=Math.max(1,...rows.map(r=>r.length)),W=widthsFor(n,kv);
+ const table=(rows,kv,customWidths)=>{
+  const n=Math.max(1,...rows.map(r=>r.length)),W=widthsFor(n,kv,customWidths);
   return '<w:tbl><w:tblPr><w:tblW w:w="'+TW+'" w:type="dxa"/>'+bd+'<w:tblLayout w:type="fixed"/><w:tblCellMar><w:top w:w="40" w:type="dxa"/><w:left w:w="90" w:type="dxa"/><w:bottom w:w="40" w:type="dxa"/><w:right w:w="90" w:type="dxa"/></w:tblCellMar></w:tblPr><w:tblGrid>'+W.map(w=>'<w:gridCol w:w="'+w+'"/>').join('')+'</w:tblGrid>'+
    rows.map((row,ri)=>'<w:tr><w:trPr><w:cantSplit/></w:trPr>'+W.map((w,i)=>{
     const head=!kv&&ri===0,key=kv&&i===0;
@@ -2310,10 +2587,20 @@ window.makeDocxBlob=function(model){
  };
  const body=model.blocks.map(b=>{
   if(b.type==='kop')return kopP(b.kop);
+  if(b.type==='orghead')return para((b.lines||[]).join('\n'),{jc:'center',rpr:'<w:b/>'});
+  if(b.type==='center')return para(b.text,{jc:'center'});
   if(b.type==='title')return para(b.text,{style:'Title'});
   if(b.type==='heading')return para(b.text,{style:'Heading1'});
-  if(b.type==='table')return table(b.rows,!!b.kv)+SPACER;
+  if(b.type==='table')return table(b.rows,!!b.kv,b.widths)+SPACER;
   if(b.type==='sign')return b.lines.map((l,i)=>para(l,{jc:'center',ind:5200,keepNext:i<b.lines.length-1})).join('');
+  if(b.type==='signPair'){
+   const cols=b.columns||[[],[]],count=Math.max(cols[0]?.length||0,cols[1]?.length||0),W=widthsFor(2,false,[50,50]);
+   const noBorders='<w:tblBorders><w:top w:val="nil"/><w:left w:val="nil"/><w:bottom w:val="nil"/><w:right w:val="nil"/><w:insideH w:val="nil"/><w:insideV w:val="nil"/></w:tblBorders>';
+   const signRows=[];
+   if(b.placeDate)signRows.push('<w:tr><w:tc><w:tcPr><w:tcW w:w="'+TW+'" w:type="dxa"/><w:gridSpan w:val="2"/></w:tcPr>'+para(b.placeDate,{jc:'left'})+'</w:tc></w:tr>');
+   for(let i=0;i<count;i++){signRows.push('<w:tr>'+cols.map((col,j)=>'<w:tc><w:tcPr><w:tcW w:w="'+W[j]+'" w:type="dxa"/></w:tcPr>'+para(col[i]||'',{jc:'left',keepNext:i<Math.min(cols[0].length,cols[1].length)-1})+'</w:tc>').join('')+'</w:tr>');}
+   return '<w:tbl><w:tblPr><w:tblW w:w="'+TW+'" w:type="dxa"/>'+noBorders+'<w:tblLayout w:type="fixed"/></w:tblPr><w:tblGrid>'+W.map(w=>'<w:gridCol w:w="'+w+'"/>').join('')+'</w:tblGrid>'+signRows.join('')+'</w:tbl>'+SPACER;
+  }
   return para(b.text,{style:b.type==='note'?'NoteText':'Normal'});
  }).join('');
  const hasKop=Object.keys(media).length>0;
