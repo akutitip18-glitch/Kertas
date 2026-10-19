@@ -931,6 +931,33 @@ body.kkpp-lowfi,body.kkpp-lowfi main{background:#f3f6f8!important;background-ima
   .wrap { padding-left: 10px !important; padding-right: 10px !important; }
 }
 </style>
+<style id="kkpp-v8-css">
+/* ===== V8 — Output SPSE: kop surat, cetak A4, rute e-katalog ===== */
+@page{size:A4;margin:14mm 16mm}
+#spse-preview.docpreview,#spse-preview.docpreview:hover{transform:none!important;transition:none}
+.spse-kop{margin:0 0 14px}
+.spse-kop img{display:block;width:100%;height:auto;max-height:42mm;object-fit:contain;margin:0 auto}
+#spse-preview table.kv td:first-child,#spse-bundle table.kv td:first-child{width:32%;font-weight:700;background:#eef4f9}
+.spse-sign{margin:18px 0 0 auto;width:46%;text-align:center;break-inside:avoid}
+.spse-sign .sp{height:56px}
+#spse-bundle{display:none}
+#kop-preview-box{border:1px dashed #b9c4ce;border-radius:10px;padding:12px;background:#fff;max-width:780px;margin:10px 0}
+#kop-preview-box img{display:block;width:100%;height:auto}
+#kop-empty{color:#607183;font-size:12px;margin:0;padding:18px 4px;text-align:center}
+.kop-apply label{display:flex;gap:8px;align-items:flex-start;margin:7px 0;font-weight:600;font-size:13px}
+.kop-apply input{margin-top:3px}
+@media print{
+ *,*::before,*::after{animation:none!important;transition:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;filter:none!important}
+ #view-spse .card{background:#fff!important;box-shadow:none!important;border:0!important}
+ body::before,body::after,.bg-orbs,.orb{display:none!important}
+ #view-spse>.ops-map-slot,#view-spse>.kkpp-v7-card,#spse-ecat-banner,#spse-kop-status{display:none!important}
+ #view-spse.print-bundle #spse-bundle{display:block}
+ #view-spse.print-bundle #spse-preview{display:none!important}
+ #spse-bundle .docpreview{transform:none!important;box-shadow:none!important;border-radius:0!important}
+ .spse-print-doc{break-after:page}.spse-print-doc:last-child{break-after:auto}
+ .spse-kop img{max-height:42mm}
+}
+</style>
 </head>
 <body>
 <header>
@@ -940,7 +967,7 @@ body.kkpp-lowfi,body.kkpp-lowfi main{background:#f3f6f8!important;background-ima
 </div>
 </header>
 <nav class="tabs no-print" aria-label="Navigasi utama aplikasi"><div class="tabrow" role="tablist" aria-label="Menu utama" aria-orientation="horizontal">
-<button type="button" class="tab active" id="tab-dashboard" role="tab" aria-selected="true" aria-controls="view-dashboard" tabindex="0" data-view="dashboard">Ringkasan</button><button type="button" class="tab" id="tab-paket" role="tab" aria-selected="false" aria-controls="view-paket" tabindex="-1" data-view="paket">Daftar paket</button><button type="button" class="tab" id="tab-kerja" role="tab" aria-selected="false" aria-controls="view-kerja" tabindex="-1" data-view="kerja">Kertas kerja</button><button type="button" class="tab" id="tab-dokumen" role="tab" aria-selected="false" aria-controls="view-dokumen" tabindex="-1" data-view="dokumen">Dokumen kerja</button><button type="button" class="tab" id="tab-spse" role="tab" aria-selected="false" aria-controls="view-spse" tabindex="-1" data-view="spse">Output SPSE</button><button type="button" class="tab" id="tab-regulasi" role="tab" aria-selected="false" aria-controls="view-regulasi" tabindex="-1" data-view="regulasi">Dasar hukum</button><button type="button" class="tab" id="tab-kendali" role="tab" aria-selected="false" aria-controls="view-kendali" tabindex="-1" data-view="kendali">Kendali &amp; Data</button><button type="button" class="tab" id="tab-panduan" role="tab" aria-selected="false" aria-controls="view-panduan" tabindex="-1" data-view="panduan">Panduan &amp; batasan</button>
+<button type="button" class="tab active" id="tab-dashboard" role="tab" aria-selected="true" aria-controls="view-dashboard" tabindex="0" data-view="dashboard">Ringkasan</button><button type="button" class="tab" id="tab-paket" role="tab" aria-selected="false" aria-controls="view-paket" tabindex="-1" data-view="paket">Daftar paket</button><button type="button" class="tab" id="tab-kerja" role="tab" aria-selected="false" aria-controls="view-kerja" tabindex="-1" data-view="kerja">Kertas kerja</button><button type="button" class="tab" id="tab-dokumen" role="tab" aria-selected="false" aria-controls="view-dokumen" tabindex="-1" data-view="dokumen">Dokumen kerja</button><button type="button" class="tab" id="tab-spse" role="tab" aria-selected="false" aria-controls="view-spse" tabindex="-1" data-view="spse">Output SPSE</button><button type="button" class="tab" id="tab-regulasi" role="tab" aria-selected="false" aria-controls="view-regulasi" tabindex="-1" data-view="regulasi">Dasar hukum</button><button type="button" class="tab" id="tab-kendali" role="tab" aria-selected="false" aria-controls="view-kendali" tabindex="-1" data-view="kendali">Kendali &amp; Data</button><button type="button" class="tab" id="tab-panduan" role="tab" aria-selected="false" aria-controls="view-panduan" tabindex="-1" data-view="panduan">Panduan &amp; batasan</button><button type="button" class="tab" id="tab-pengaturan" role="tab" aria-selected="false" aria-controls="view-pengaturan" tabindex="-1" data-view="pengaturan">Pengaturan</button>
 </div></nav>
 
 <main class="wrap">
@@ -997,6 +1024,7 @@ body.kkpp-lowfi,body.kkpp-lowfi main{background:#f3f6f8!important;background-ima
 <div class="spse-case-picker-main"><label for="spse-case-select">Paket yang sedang dikerjakan</label><select id="spse-case-select" onchange="selectSpseCase(this.value)" aria-describedby="spse-case-help"><option value="">Pilih paket terlebih dahulu</option></select><div id="spse-case-help" class="helper">Formulir keluaran disimpan pada paket yang dipilih. Pastikan paket, metode, dan penugasannya benar.</div><div id="spse-active-summary" class="spse-active-summary">Belum ada paket aktif.</div></div>
 <div class="bar spse-case-actions"><button class="btn" type="button" onclick="go('paket')">Kelola / tambah paket</button></div>
 </div>
+<div id="spse-kop-status" class="small muted no-print" style="margin:2px 2px 10px"></div><div id="spse-ecat-banner" class="inline-alert info no-print spse-field-hidden" role="status"></div>
 <div class="no-print v5-formgrid-wrapper"><div class="spse-output-choice">
 <label for="spse-doc-type">Keluaran yang akan dibuat</label>
 <select data-spse id="spse-doc-type" onchange="updateSpseFormMode();saveSpseForm()"><option value="dpp_ep">DPP — e-purchasing/Katalog</option><option value="price_ep">HPS/Referensi Harga e-purchasing — data dari PPK</option><option value="review_pl">Berita Acara Reviu DPP — Pengadaan Langsung</option><option value="survey_pl">Hasil survei/perbandingan harga oleh PP</option><option value="mdp_pl">Dokumen Pemilihan Pengadaan Langsung — struktur MDP</option></select>
@@ -1043,7 +1071,7 @@ body.kkpp-lowfi,body.kkpp-lowfi main{background:#f3f6f8!important;background-ima
 <div class="v5-spse-group-body formgrid">
 <div class="field v5-field" data-output-types="survey_pl"><label for="spse-survey1">Sumber informasi harga 1</label><textarea data-spse="" id="spse-survey1" onchange="saveSpseForm()" placeholder="Sumber/penyedia; tanggal; produk/volume; harga; kualitas/spesifikasi; tautan atau bukti."></textarea></div><div class="field v5-field" data-output-types="survey_pl"><label for="spse-survey2">Sumber informasi harga 2</label><textarea data-spse="" id="spse-survey2" onchange="saveSpseForm()" placeholder="Sumber berbeda; tanggal; produk/volume; harga; kualitas/spesifikasi; tautan atau bukti."></textarea></div><div class="field v5-field full" data-output-types="survey_pl"><label for="spse-survey-conclusion">Kesimpulan perbandingan harga dan kualitas</label><textarea data-spse="" id="spse-survey-conclusion" onchange="saveSpseForm()" placeholder="Bandingkan harga, spesifikasi/kualitas, lokasi, waktu, ongkos/pajak, dan alasan sumber digunakan."></textarea></div><div class="field v5-field" data-output-types="review_pl"><label for="spse-review">Temuan reviu DPP dan tindak lanjut</label><textarea data-spse="" id="spse-review" onchange="saveSpseForm()" placeholder="Butir dokumen; temuan; dampak; permintaan klarifikasi/perbaikan; pemilik dan tenggat."></textarea></div><div class="field v5-field" data-output-types="mdp_pl"><label for="spse-misc">Jadwal/ketentuan tambahan MDP PL</label><textarea data-spse="" id="spse-misc" onchange="saveSpseForm()" placeholder="Jadwal, persyaratan yang berdasar, alamat penyampaian, atau catatan khusus paket."></textarea></div></div></div></div></div>
 <div class="bar no-print" id="spse-form-actions" style="margin:12px 0"><button class="btn" type="button" onclick="saveSpseForm()">Simpan data keluaran</button><button class="btn primary" type="button" onclick="downloadSpseDocx()">Unduh berkas DOCX</button><button class="btn" type="button" onclick="printSpseDoc()">Cetak / Simpan PDF</button></div>
-<div class="v5-validation hidden" id="spse-value-validation" role="status" aria-live="polite" aria-atomic="true" style="margin-bottom:12px;"></div><div id="spse-preflight-panel" class="inline-alert info" role="status" aria-live="polite" aria-atomic="true">Pemeriksaan prasyarat keluaran akan tampil setelah paket dipilih.</div><div class="docpreview" id="spse-preview">Buka paket dan lengkapi data keluaran SPSE untuk menyusun dokumen.</div>
+<div class="v5-validation hidden" id="spse-value-validation" role="status" aria-live="polite" aria-atomic="true" style="margin-bottom:12px;"></div><div id="spse-preflight-panel" class="inline-alert info" role="status" aria-live="polite" aria-atomic="true">Pemeriksaan prasyarat keluaran akan tampil setelah paket dipilih.</div><div class="docpreview" id="spse-preview">Buka paket dan lengkapi data keluaran SPSE untuk menyusun dokumen.</div><div id="spse-bundle" aria-hidden="true"></div>
 </div>
 </section>
 <section class="view" id="view-regulasi" role="tabpanel" aria-labelledby="tab-regulasi" tabindex="0"><div class="ops-map-slot" id="map-regulasi"></div><div class="card"><div class="section-head"><div><h2>Dasar hukum dan sumber resmi</h2><div class="small muted">Daftar ini disusun dari verifikasi sumber primer. Buka instrumen untuk memeriksa naskah konsolidasi, perubahan, status berlaku, dan aturan pelaksana.</div></div><span class="badge" id="law-review-date"></span></div>
@@ -1055,6 +1083,15 @@ body.kkpp-lowfi,body.kkpp-lowfi main{background:#f3f6f8!important;background-ima
 <span class="badge" id="law-search-count" role="status" aria-live="polite" style="white-space:nowrap;">24 regulasi</span>
 </div>
 <div class="inline-alert warn">Jangan menganggap daftar ini sebagai inventaris seluruh produk hukum yang mungkin berlaku untuk semua kementerian/lembaga/pemerintah daerah. Peraturan sektoral, daerah, kebijakan internal, pendanaan, dan ketentuan yang terbit setelah tanggal verifikasi perlu diperiksa tersendiri.</div><div class="refs" id="regulations"></div></div></section>
+<section class="view" id="view-pengaturan" role="tabpanel" aria-labelledby="tab-pengaturan" tabindex="0"><div class="card"><div class="section-head"><div><h2>Pengaturan instansi</h2><div class="small muted">Kop surat yang diunggah di sini dipakai otomatis pada keluaran SPSE: pratinjau, Cetak/Simpan PDF, dan berkas DOCX.</div></div><button class="btn" type="button" onclick="go('spse')">Buka Output SPSE</button></div>
+<div class="field"><label for="kop-file">Unggah kop surat (PNG / JPG / WebP, maks. 5 MB)</label><input id="kop-file" type="file" accept="image/png,image/jpeg,image/webp" onchange="kopUpload(this)"/><div class="helper">Gunakan gambar kop selebar halaman (disarankan ≥ 1200 px, latar putih). Tinggi maksimum saat dicetak 4,2 cm; gambar yang lebih tinggi diperkecil proporsional. Gambar dioptimalkan otomatis (maks. lebar 1600 px).</div></div>
+<div id="kop-status" class="inline-alert info" role="status" aria-live="polite">Belum ada kop surat. Unggah gambar kop untuk dipakai pada DPP dan HPS.</div>
+<div id="kop-preview-box"><img id="kop-preview-img" alt="Pratinjau kop surat" hidden/><p id="kop-empty">Belum ada kop surat.</p></div>
+<div id="kop-meta" class="small muted"></div>
+<h3 style="margin:16px 0 4px;font-size:14px">Terapkan kop pada</h3>
+<div class="kop-apply"><label><input type="checkbox" id="kop-apply-dpp" onchange="kopApply()"/>DPP — e-purchasing/katalog</label><label><input type="checkbox" id="kop-apply-hps" onchange="kopApply()"/>HPS / Referensi Harga e-purchasing</label><label><input type="checkbox" id="kop-apply-pl" onchange="kopApply()"/>Dokumen Pengadaan Langsung (BA reviu DPP, hasil survei harga, struktur MDP)</label></div>
+<div class="bar no-print" style="margin-top:12px"><button class="btn" id="kop-remove" type="button" onclick="kopRemove()" disabled>Hapus kop surat</button></div>
+<div class="inline-alert warn"><strong>Penyimpanan lokal.</strong> Kop disimpan di browser perangkat ini, terpisah dari data paket; tidak ikut ekspor CSV, cadangan, atau transfer terenkripsi. Pada perangkat/browser lain atau setelah data browser dihapus, unggah ulang kop.</div></div></section>
 <section class="view" id="view-panduan" role="tabpanel" aria-labelledby="tab-panduan" tabindex="0"><div class="ops-map-slot" id="map-panduan"></div><div class="grid cols2"><div class="card"><h2>Ruang lingkup peran Pejabat Pengadaan</h2><div id="duties-content"></div></div><div class="card"><h2>Prinsip penggunaan</h2><ul class="list small"><li>Gunakan hanya setelah pejabat ditetapkan/ditugaskan dan kewenangannya diperiksa.</li><li>Pisahkan tugas PP, PPK, PA/KPA, Pokja Pemilihan, PPHP/Tim Pemeriksa, bendahara, dan pengelola sistem.</li><li>Checklist adalah alat kendali internal, bukan daftar syarat universal. Tandai “tidak relevan” hanya dengan alasan.</li><li>Hindari mengisi data sensitif yang tidak diperlukan. Penyimpanan lokal browser tidak terenkripsi oleh aplikasi.</li><li>Gunakan ekspor cadangan berkala; hasil ekspor JSON tidak terenkripsi dan hanya mencakup data aplikasi, bukan berkas bukti asli. Impor dapat mengganti atau menggabungkan data; tetap simpan salinan cadangan terpisah.</li><li>Dokumen yang dicetak merupakan draf internal. Verifikasi format, kewenangan tanda tangan, substansi, dan arsip pada sistem resmi.</li><li>Catat dasar keputusan, fakta yang diperiksa, waktu, dan rujukan dokumen. Jangan mengubah bukti asli.</li></ul></div><div class="card"><h2>Keamanan data dan pencadangan</h2><p class="small">Aplikasi tidak mengirim data ke server. Data paket disimpan di penyimpanan browser perangkat yang sedang digunakan. Orang lain yang memakai profil browser yang sama mungkin dapat melihat data tersebut. Aplikasi tidak mengenkripsi catatan.</p><div class="bar no-print"><button class="btn primary" onclick="exportBackup()">Ekspor backup JSON</button><button class="btn" onclick="document.getElementById('import-file').click()">Pulihkan backup</button></div></div><div class="card"><h2>Catatan pembaruan hukum</h2><div class="small muted" id="law-update-note"></div></div></div><div class="card" style="grid-column:1/-1"><h2>Matriks ambang nilai, metode, wilayah, dan bentuk kontrak</h2><p class="small muted">Matriks ini adalah indeks aturan untuk pemeriksaan awal. Baris rezim khusus hanya berlaku jika seluruh syarat ruang lingkupnya dibuktikan. Memilih wilayah Papua saja tidak cukup untuk menerapkan angka khusus.</p><div id="procurement-rules-matrix" aria-live="polite"><p class="small muted">Matriks dimuat saat aplikasi dibuka.</p></div></div></section>
 
 <section class="view" id="view-kendali" role="tabpanel" aria-labelledby="tab-kendali" tabindex="0">
@@ -1300,7 +1337,7 @@ const FLOW_MAPS={
 function renderMap(viewName){const host=document.getElementById('map-'+viewName),cfg=FLOW_MAPS[viewName];if(!host||!cfg)return;const c=activeCase();const context=c?`Paket aktif: <strong>${esc(c.name)}</strong> · ${esc(methodLabel(c.method))} · checklist ${progress(c)}%`:'Belum ada paket aktif. Buat/pilih paket dahulu untuk melihat konteks spesifik.';const steps=cfg.steps.map((st,i)=>`<button type="button" class="ops-map-node ${i===cfg.focus?'is-focus':''}" onclick="go('${st[2]}')" aria-label="${esc(st[0])}; buka menu ${esc(st[2])}"><span class="ops-map-index">${String(i+1).padStart(2,'0')}</span><strong>${esc(st[0])}</strong><small>${esc(st[1])}</small><span class="ops-map-target">Menu ${esc(st[2])}</span></button>`).join('');const relations=cfg.relations.map(r=>{const kind=r[2],cl=kind==='manual'?'manual':kind==='tidak tersambung'?'none':'';const pill=kind==='otomatis'?'LOKAL OTOMATIS':kind==='manual'?'MANUAL':'TIDAK TERSAMBUNG';return `<div class="ops-map-relation"><strong><span class="ops-map-pill ${cl}">${pill}</span>${esc(r[0])}</strong><p>${esc(r[1])}</p></div>`;}).join('');host.innerHTML=`<div class="ops-map-card"><div class="ops-map-head"><div><h2>${esc(cfg.title)}</h2><p>${esc(cfg.summary)}</p></div><div class="ops-map-toolbar no-print"><button type="button" class="btn" onclick="toggleMapMode('${viewName}','3d')">Tampilan 3D</button><button type="button" class="btn" onclick="toggleMapMode('${viewName}','2d')">Tampilan 2D</button></div></div><div class="ops-map-context">${context}</div><div class="ops-map-scene" data-mode="3d" aria-label="Peta alur operasional 3D"><div class="ops-map-track" role="list">${steps}</div></div><div class="ops-map-relations">${relations}</div><div class="ops-map-foot">Panah menunjukkan urutan kerja. Klik kartu untuk berpindah menu. “Lokal otomatis” hanya berarti data dipakai ulang di aplikasi ini; bukan integrasi SPSE/API. Pada cetak, peta diratakan ke tampilan 2D.</div></div>`;}
 function toggleMapMode(viewName,mode){const scene=document.querySelector('#map-'+viewName+' .ops-map-scene');if(scene)scene.dataset.mode=mode;}
 
-function go(name){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id==='view-'+name));document.querySelectorAll('.tab').forEach(x=>{const on=x.dataset.view===name;x.classList.toggle('active',on);x.setAttribute('aria-selected',String(on));x.tabIndex=on?0:-1;});if(name==='dashboard')renderDashboard();if(name==='paket')renderCaseList();if(name==='kerja')renderWork();if(name==='dokumen')renderDoc();if(name==='spse')renderSpse();renderMap(name);window.scrollTo({top:0,behavior:'smooth'});}
+function go(name){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id==='view-'+name));document.querySelectorAll('.tab').forEach(x=>{const on=x.dataset.view===name;x.classList.toggle('active',on);x.setAttribute('aria-selected',String(on));x.tabIndex=on?0:-1;});if(name==='dashboard')renderDashboard();if(name==='paket')renderCaseList();if(name==='kerja')renderWork();if(name==='dokumen')renderDoc();if(name==='spse')renderSpse();if(name==='pengaturan'&&typeof renderSettings==='function')renderSettings();renderMap(name);window.scrollTo({top:0,behavior:'smooth'});}
 document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>go(b.dataset.view)));
 const tabList=document.querySelector('[role="tablist"]');if(tabList)tabList.addEventListener('keydown',e=>{const tabs=[...tabList.querySelectorAll('[role="tab"]')];const i=tabs.indexOf(document.activeElement);let j=i;if(e.key==='ArrowRight')j=(i+1)%tabs.length;else if(e.key==='ArrowLeft')j=(i-1+tabs.length)%tabs.length;else if(e.key==='Home')j=0;else if(e.key==='End')j=tabs.length-1;else return;e.preventDefault();tabs[j].focus();go(tabs[j].dataset.view);});
 function activeCase(){return state.cases.find(c=>c.id===state.activeId)||null;}
@@ -2057,6 +2094,312 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden)renderSla(
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();
 
+</script>
+<script id="kkpp-v8-spse">
+'use strict';
+/* V8 — Output SPSE: kop surat instansi, cetak A4 bersih, rute e-katalog (DPP + HPS), DOCX A4, validasi rincian HPS */
+(function(){
+const KOP_KEY='kkpp_instansi_v1';
+const DEFAULT_APPLY={dpp_ep:true,price_ep:true,pl:false};
+const EP_TYPES=['dpp_ep','price_ep'],PL_TYPES=['review_pl','survey_pl','mdp_pl'];
+const $=id=>document.getElementById(id);
+
+/* ---------- Penyimpanan pengaturan instansi (terpisah dari data paket) ---------- */
+function readInst(){
+ try{
+  const v=JSON.parse(localStorage.getItem(KOP_KEY)||'null');
+  if(v&&typeof v==='object'){
+   const k=v.kop;
+   const ok=k&&typeof k.dataUrl==='string'&&/^data:image\/(png|jpeg);base64,[A-Za-z0-9+\/=]+$/.test(k.dataUrl)&&k.w>0&&k.h>0;
+   return {kop:ok?k:null,apply:Object.assign({},DEFAULT_APPLY,v.apply&&typeof v.apply==='object'?v.apply:{})};
+  }
+ }catch(e){}
+ return {kop:null,apply:Object.assign({},DEFAULT_APPLY)};
+}
+function writeInst(v){
+ try{localStorage.setItem(KOP_KEY,JSON.stringify(v));return true;}
+ catch(e){alert('Kop surat gagal disimpan: ruang penyimpanan browser penuh atau dibatasi. Coba gambar yang lebih kecil.');return false;}
+}
+function kopGroup(t){return t==='dpp_ep'?'dpp_ep':t==='price_ep'?'price_ep':'pl';}
+function kopFor(t){const s=readInst();return s.kop&&s.apply[kopGroup(t)]?s.kop:null;}
+
+/* ---------- Angka format Indonesia & analisis rincian HPS ---------- */
+function idNum(s){
+ s=String(s??'').replace(/rp\.?/ig,'').replace(/\s/g,'');
+ if(!s)return NaN;
+ if(/^\d{1,3}(\.\d{3})+(,\d+)?$/.test(s))return Number(s.replace(/\./g,'').replace(',','.'));
+ if(/^\d+(,\d+)?$/.test(s))return Number(s.replace(',','.'));
+ if(/^\d{1,3}(,\d{3})+(\.\d+)?$/.test(s))return Number(s.replace(/,/g,''));
+ if(/^\d+(\.\d+)?$/.test(s))return Number(s);
+ return NaN;
+}
+function hpsAnalysis(text){
+ const out={rows:0,numeric:0,total:0,issues:[]};
+ String(text||'').split(/\r?\n/).forEach((line,i)=>{
+  const cells=line.split('|').map(x=>x.trim());
+  if(!cells.some(Boolean))return;
+  out.rows++;
+  if(cells.length<6){out.issues.push('baris '+(i+1)+' hanya '+cells.length+' kolom (perlu: No | uraian | volume | satuan | harga satuan | jumlah | sumber).');return;}
+  const vol=idNum(cells[2]),price=idNum(cells[4]),amt=idNum(cells[5]);
+  if([vol,price,amt].some(Number.isNaN)){out.issues.push('baris '+(i+1)+': volume/harga satuan/jumlah tidak terbaca sebagai angka.');return;}
+  out.numeric++;out.total+=amt;
+  if(Math.abs(vol*price-amt)>1)out.issues.push('baris '+(i+1)+': volume × harga satuan = '+rupiah(Math.round(vol*price))+', berbeda dari jumlah '+rupiah(amt)+'.');
+ });
+ return out;
+}
+
+/* ---------- Model dokumen: label metode, tabel kunci-nilai, total HPS, tanda tangan, kop ---------- */
+const baseModel=window.spseModel;
+window.spseModel=function(c,t){
+ const m=baseModel(c,t),d=c.spseData||{};
+ const epLabel=v=>{const o=[...document.querySelectorAll('#spse-ep-method option')].find(x=>x.value===v);return o?o.textContent:v;};
+ m.blocks.forEach(b=>{
+  if(b.type!=='table')return;
+  b.rows.forEach(r=>{if((r[0]==='Metode katalog'||r[0]==='Metode e-purchasing')&&r[1])r[1]=epLabel(r[1]);});
+  b.kv=b.rows.length>0&&b.rows.every(r=>r.length===2);
+  if(t==='price_ep'&&b.rows[0]&&b.rows[0][0]==='No'){
+   const a=hpsAnalysis(d['spse-hps-lines']);
+   if(a.numeric>0)b.rows.push(['','TOTAL (dihitung aplikasi dari rincian di atas; cocokkan dengan dokumen PPK)','','','',rupiah(a.total),'']);
+  }
+ });
+ m.blocks=m.blocks.map(b=>{
+  if(b.type==='p'&&/^Disiapkan\/ditetapkan PPK:/.test(b.text)&&(t==='dpp_ep'||t==='price_ep'))
+   return {type:'sign',lines:['Disiapkan/ditetapkan oleh PPK,','','','',c.ppk||'____________________','Tanggal: ____________________']};
+  return b;
+ });
+ const kop=kopFor(t);
+ if(kop)m.blocks.unshift({type:'kop',kop});
+ return m;
+};
+
+/* ---------- Pratinjau HTML ---------- */
+function blocksHtml(blocks){
+ return blocks.map(b=>{
+  if(b.type==='kop')return '<div class="spse-kop"><img alt="Kop surat instansi" src="'+b.kop.dataUrl+'"></div>';
+  if(b.type==='title')return '<h1>'+esc(b.text)+'</h1>';
+  if(b.type==='heading')return '<h2>'+esc(b.text)+'</h2>';
+  if(b.type==='p')return '<p>'+esc(b.text).replace(/\n/g,'<br>')+'</p>';
+  if(b.type==='note')return '<p style="font-size:10px;color:#555;border-left:3px solid #d8bd68;padding-left:8px">'+esc(b.text).replace(/\n/g,'<br>')+'</p>';
+  if(b.type==='table')return '<table class="'+(b.kv?'kv':'')+'"><tbody>'+b.rows.map((r,i)=>'<tr>'+r.map(v=>spseCellHtml(v,!b.kv&&i===0)).join('')+'</tr>').join('')+'</tbody></table>';
+  if(b.type==='sign')return '<div class="spse-sign">'+b.lines.map(l=>l?'<div>'+esc(l)+'</div>':'<div class="sp"></div>').join('')+'</div>';
+  return '';
+ }).join('');
+}
+window.renderSpseDoc=function(){
+ const c=activeCase(),target=$('spse-preview');
+ if(!target)return;
+ if(!c){target.innerHTML='Buka/simpan paket terlebih dahulu.';renderSpsePreflight();updateKopStatus();return;}
+ target.innerHTML=blocksHtml(spseModel(c,$('spse-doc-type').value).blocks);
+ renderSpsePreflight();updateKopStatus();
+};
+
+/* ---------- Rute jenis keluaran menurut metode paket + banner e-katalog ---------- */
+const baseMode=window.updateSpseFormMode;
+window.updateSpseFormMode=function(){
+ baseMode();
+ const sel=$('spse-doc-type');if(!sel)return;
+ const c=activeCase();
+ const allowed=c&&c.method==='ep'?EP_TYPES:c&&c.method==='pl'?PL_TYPES:null;
+ [...sel.options].forEach(o=>{const ok=!allowed||allowed.includes(o.value);o.hidden=!ok;o.disabled=!ok;});
+ if(allowed&&!allowed.includes(sel.value)){sel.value=allowed[0];baseMode();}
+ updateEcatBanner(c);
+};
+function updateEcatBanner(c){
+ const b=$('spse-ecat-banner');if(!b)return;
+ if(!c||c.method!=='ep'){b.classList.add('spse-field-hidden');b.innerHTML='';return;}
+ const d=c.spseData||{};
+ const fixedEx=d['spse-fixed']==='yes'&&d['spse-ep-method']==='fixed';
+ const price=spsePriceRule(c,d);
+ b.classList.remove('spse-field-hidden');
+ b.innerHTML='<strong>Paket e-katalog (e-purchasing).</strong> Keluaran yang relevan: DPP'+(fixedEx?' saja — HPS/Referensi Harga ditandai dikecualikan (harga tetap).':' dan dokumen harga ('+esc(price.label)+').')+'<div class="bar" style="margin-top:8px"><button type="button" class="btn primary" onclick="printSpseBundle()">Cetak DPP'+(fixedEx?'':' + HPS')+'</button></div>';
+}
+function updateKopStatus(){
+ const el=$('spse-kop-status');if(!el)return;
+ const s=readInst(),t=$('spse-doc-type')?.value||'dpp_ep';
+ let msg;
+ if(!s.kop)msg='Kop surat belum diatur — dokumen dicetak tanpa kop.';
+ else if(s.apply[kopGroup(t)])msg='Kop surat aktif pada keluaran ini ('+esc(s.kop.name||'gambar kop')+').';
+ else msg='Kop surat tidak dipakai untuk jenis keluaran ini (dapat diubah di Pengaturan).';
+ el.innerHTML=msg+' <button class="btn" type="button" style="padding:3px 10px;font-size:11px" onclick="go(\'pengaturan\')">Atur kop</button>';
+}
+
+/* ---------- Validasi tambahan pada pemeriksaan prasyarat ---------- */
+const basePre=window.spsePreflight;
+window.spsePreflight=function(c,d,t){
+ const r=basePre(c,d,t);
+ if(t==='price_ep'&&d['spse-hps-lines']){
+  const a=hpsAnalysis(d['spse-hps-lines']);
+  a.issues.slice(0,6).forEach(x=>r.issues.push('Rincian harga — '+x));
+  if(a.issues.length>6)r.issues.push('Rincian harga — masih ada '+(a.issues.length-6)+' catatan pada baris lain.');
+  const hps=Number(c.hps);
+  if(a.numeric>0&&Number.isFinite(hps)&&hps>0&&Math.abs(a.total-hps)>1)r.issues.push('Total rincian harga ('+rupiah(a.total)+') tidak sama dengan HPS pada data paket ('+rupiah(hps)+').');
+ }
+ return r;
+};
+
+/* ---------- Cetak: satu dokumen, atau DPP + HPS sekaligus ---------- */
+function doPrint(bundle){
+ const el=$('view-spse');
+ document.querySelectorAll('.view').forEach(v=>v.classList.remove('print-active'));
+ el.classList.add('print-active');el.classList.toggle('print-bundle',!!bundle);
+ const done=()=>{el.classList.remove('print-active','print-bundle');const b=$('spse-bundle');if(b)b.innerHTML='';window.removeEventListener('afterprint',done);};
+ window.addEventListener('afterprint',done);
+ window.print();
+ setTimeout(done,1500);
+}
+window.printSpseDoc=function(){
+ saveSpseForm();
+ const c=activeCase();if(!c){alert('Buka paket terlebih dahulu.');return;}
+ const type=$('spse-doc-type').value,pf=spsePreflight(c,spseData(c),type);
+ renderSpseDoc();
+ if(pf.hard.length){alert('Keluaran tidak dicetak karena ada prasyarat yang menghalangi:\n\n• '+pf.hard.join('\n• '));return;}
+ if(pf.issues.length&&!confirm('Masih ada '+pf.issues.length+' catatan kelengkapan. Hasil cetak tetap berstatus DRAF. Tetap cetak?\n\n• '+pf.issues.slice(0,10).join('\n• ')))return;
+ auditEvent(c,'Cetak keluaran SPSE',type);persist();renderActivity(c);
+ doPrint(false);
+};
+window.printSpseBundle=function(){
+ saveSpseForm();
+ const c=activeCase();if(!c){alert('Buka paket terlebih dahulu.');return;}
+ if(c.method!=='ep'){alert('Cetak DPP + HPS hanya untuk paket dengan metode E-purchasing. Metode paket ini: '+methodLabel(c.method)+'.');return;}
+ const d=spseData(c),parts=[],skipped=[];
+ [['dpp_ep','DPP'],['price_ep','HPS/Referensi Harga']].forEach(([t,l])=>{
+  const pf=spsePreflight(c,d,t);
+  if(pf.hard.length)skipped.push(l+': '+pf.hard.join(' '));else parts.push({t,l,pf});
+ });
+ if(!parts.length){alert('Tidak ada dokumen yang dapat dicetak:\n\n• '+skipped.join('\n• '));return;}
+ const issues=[...new Set(parts.flatMap(p=>p.pf.issues))];
+ if(issues.length||skipped.length){
+  const msg=(skipped.length?'Tidak dicetak:\n• '+skipped.join('\n• ')+'\n\n':'')+(issues.length?'Masih ada '+issues.length+' catatan kelengkapan (hasil tetap berstatus DRAF):\n• '+issues.slice(0,10).join('\n• ')+(issues.length>10?'\n• …':'')+'\n\n':'')+'Lanjut mencetak '+parts.map(p=>p.l).join(' + ')+'?';
+  if(!confirm(msg))return;
+ }
+ $('spse-bundle').innerHTML=parts.map(p=>'<div class="docpreview spse-print-doc">'+blocksHtml(spseModel(c,p.t).blocks)+'</div>').join('');
+ auditEvent(c,'Cetak gabungan DPP + HPS',parts.map(p=>p.l).join(' + '));persist();renderActivity(c);
+ doPrint(true);
+};
+
+/* ---------- DOCX: A4, lebar tabel tepat, kop gambar, nomor halaman ---------- */
+window.makeDocxBlob=function(model){
+ const TW=9638,NS='xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"';
+ const run=(t,rpr)=>'<w:r>'+(rpr?'<w:rPr>'+rpr+'</w:rPr>':'')+'<w:t xml:space="preserve">'+xmlEsc(t)+'</w:t></w:r>';
+ const para=(text,o={})=>{
+  const ppr=(o.style?'<w:pStyle w:val="'+o.style+'"/>':'')+(o.keepNext?'<w:keepNext/>':'')+(o.ind?'<w:ind w:left="'+o.ind+'"/>':'')+(o.jc?'<w:jc w:val="'+o.jc+'"/>':'');
+  const runs=String(text??'').split('\n').map((x,i)=>(i?'<w:r><w:br/></w:r>':'')+run(x,o.rpr)).join('');
+  return '<w:p>'+(ppr?'<w:pPr>'+ppr+'</w:pPr>':'')+runs+'</w:p>';
+ };
+ const SPACER='<w:p><w:pPr><w:spacing w:after="60"/></w:pPr></w:p>';
+ const widthsFor=(n,kv)=>{if(kv)return [3000,TW-3000];if(n===7)return [500,2500,900,900,1500,1700,TW-8000];const w=Math.floor(TW/n);return Array.from({length:n},(_,i)=>i===n-1?TW-w*(n-1):w);};
+ const bd='<w:tblBorders><w:top w:val="single" w:sz="4" w:color="7F8C99"/><w:left w:val="single" w:sz="4" w:color="7F8C99"/><w:bottom w:val="single" w:sz="4" w:color="7F8C99"/><w:right w:val="single" w:sz="4" w:color="7F8C99"/><w:insideH w:val="single" w:sz="4" w:color="B9C4CE"/><w:insideV w:val="single" w:sz="4" w:color="B9C4CE"/></w:tblBorders>';
+ const table=(rows,kv)=>{
+  const n=Math.max(1,...rows.map(r=>r.length)),W=widthsFor(n,kv);
+  return '<w:tbl><w:tblPr><w:tblW w:w="'+TW+'" w:type="dxa"/>'+bd+'<w:tblLayout w:type="fixed"/><w:tblCellMar><w:top w:w="40" w:type="dxa"/><w:left w:w="90" w:type="dxa"/><w:bottom w:w="40" w:type="dxa"/><w:right w:w="90" w:type="dxa"/></w:tblCellMar></w:tblPr><w:tblGrid>'+W.map(w=>'<w:gridCol w:w="'+w+'"/>').join('')+'</w:tblGrid>'+
+   rows.map((row,ri)=>'<w:tr><w:trPr><w:cantSplit/></w:trPr>'+W.map((w,i)=>{
+    const head=!kv&&ri===0,key=kv&&i===0;
+    const sh=head?'<w:shd w:val="clear" w:color="auto" w:fill="DCEAF4"/>':key?'<w:shd w:val="clear" w:color="auto" w:fill="EEF4F9"/>':'';
+    return '<w:tc><w:tcPr><w:tcW w:w="'+w+'" w:type="dxa"/>'+sh+'</w:tcPr>'+para(row[i]??'',{rpr:(head||key)?'<w:b/>':''})+'</w:tc>';
+   }).join('')+'</w:tr>').join('')+'</w:tbl>';
+ };
+ const media={};
+ const kopP=k=>{
+  const isPng=k.dataUrl.startsWith('data:image/png');
+  const bin=atob(k.dataUrl.split(',')[1]),bytes=new Uint8Array(bin.length);
+  for(let i=0;i<bin.length;i++)bytes[i]=bin.charCodeAt(i);
+  media['word/media/kop.'+(isPng?'png':'jpg')]=bytes;
+  let cx=TW*635,cy=Math.round(cx*k.h/k.w);const MAXH=42*36000;
+  if(cy>MAXH){cx=Math.round(cx*MAXH/cy);cy=MAXH;}
+  return '<w:p><w:pPr><w:spacing w:after="160"/><w:jc w:val="center"/></w:pPr><w:r><w:drawing><wp:inline distT="0" distB="0" distL="0" distR="0"><wp:extent cx="'+cx+'" cy="'+cy+'"/><wp:docPr id="1" name="Kop surat" descr="Kop surat instansi"/><wp:cNvGraphicFramePr><a:graphicFrameLocks noChangeAspect="1"/></wp:cNvGraphicFramePr><a:graphic><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:pic><pic:nvPicPr><pic:cNvPr id="0" name="kop"/><pic:cNvPicPr/></pic:nvPicPr><pic:blipFill><a:blip r:embed="rId10"/><a:stretch><a:fillRect/></a:stretch></pic:blipFill><pic:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="'+cx+'" cy="'+cy+'"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></pic:spPr></pic:pic></a:graphicData></a:graphic></wp:inline></w:drawing></w:r></w:p>';
+ };
+ const body=model.blocks.map(b=>{
+  if(b.type==='kop')return kopP(b.kop);
+  if(b.type==='title')return para(b.text,{style:'Title'});
+  if(b.type==='heading')return para(b.text,{style:'Heading1'});
+  if(b.type==='table')return table(b.rows,!!b.kv)+SPACER;
+  if(b.type==='sign')return b.lines.map((l,i)=>para(l,{jc:'center',ind:5200,keepNext:i<b.lines.length-1})).join('');
+  return para(b.text,{style:b.type==='note'?'NoteText':'Normal'});
+ }).join('');
+ const hasKop=Object.keys(media).length>0;
+ const kopExt=Object.keys(media)[0]||'';
+ const doc='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document '+NS+' xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"><w:body>'+body+'<w:sectPr><w:footerReference w:type="default" r:id="rId3"/><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1134" w:right="1134" w:bottom="1134" w:left="1134" w:header="567" w:footer="567" w:gutter="0"/></w:sectPr></w:body></w:document>';
+ const footer='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:ftr '+NS+'><w:p><w:pPr><w:jc w:val="center"/></w:pPr><w:r><w:rPr><w:sz w:val="16"/></w:rPr><w:t xml:space="preserve">Halaman </w:t></w:r><w:r><w:rPr><w:sz w:val="16"/></w:rPr><w:fldChar w:fldCharType="begin"/></w:r><w:r><w:rPr><w:sz w:val="16"/></w:rPr><w:instrText xml:space="preserve"> PAGE </w:instrText></w:r><w:r><w:rPr><w:sz w:val="16"/></w:rPr><w:fldChar w:fldCharType="separate"/></w:r><w:r><w:rPr><w:sz w:val="16"/></w:rPr><w:t>1</w:t></w:r><w:r><w:rPr><w:sz w:val="16"/></w:rPr><w:fldChar w:fldCharType="end"/></w:r></w:p></w:ftr>';
+ const files={
+  '[Content_Types].xml':'<?xml version="1.0" encoding="UTF-8"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Default Extension="png" ContentType="image/png"/><Default Extension="jpg" ContentType="image/jpeg"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/><Override PartName="/word/footer1.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.footer+xml"/></Types>',
+  '_rels/.rels':'<?xml version="1.0" encoding="UTF-8"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>',
+  'word/_rels/document.xml.rels':'<?xml version="1.0" encoding="UTF-8"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/><Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/footer" Target="footer1.xml"/>'+(hasKop?'<Relationship Id="rId10" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="'+kopExt.replace('word/','')+'"/>':'')+'</Relationships>',
+  'word/styles.xml':'<?xml version="1.0" encoding="UTF-8"?><w:styles '+NS+'><w:style w:type="paragraph" w:default="1" w:styleId="Normal"><w:name w:val="Normal"/><w:pPr><w:spacing w:after="80"/></w:pPr><w:rPr><w:rFonts w:ascii="Arial" w:hAnsi="Arial"/><w:sz w:val="20"/></w:rPr></w:style><w:style w:type="paragraph" w:styleId="Title"><w:name w:val="Title"/><w:basedOn w:val="Normal"/><w:pPr><w:jc w:val="center"/><w:spacing w:after="240"/></w:pPr><w:rPr><w:b/><w:sz w:val="28"/></w:rPr></w:style><w:style w:type="paragraph" w:styleId="Heading1"><w:name w:val="heading 1"/><w:basedOn w:val="Normal"/><w:pPr><w:keepNext/><w:spacing w:before="200" w:after="100"/></w:pPr><w:rPr><w:b/><w:sz w:val="24"/></w:rPr></w:style><w:style w:type="paragraph" w:styleId="NoteText"><w:name w:val="Note Text"/><w:basedOn w:val="Normal"/><w:rPr><w:i/><w:color w:val="555555"/><w:sz w:val="18"/></w:rPr></w:style></w:styles>',
+  'word/document.xml':doc,
+  'word/footer1.xml':footer
+ };
+ Object.assign(files,media);
+ const enc=new TextEncoder();
+ const crcTable=(()=>{const t=[];for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0;}return t;})();
+ const crc32=a=>{let c=0xFFFFFFFF;for(const b of a)c=crcTable[(c^b)&255]^(c>>>8);return (c^0xFFFFFFFF)>>>0;};
+ const u16=n=>[n&255,(n>>>8)&255],u32=n=>[n&255,(n>>>8)&255,(n>>>16)&255,(n>>>24)&255];
+ const chunks=[],centrals=[];let off=0;
+ for(const [name,content] of Object.entries(files)){
+  const nb=enc.encode(name),data=typeof content==='string'?enc.encode(content):content,crc=crc32(data);
+  const local=new Uint8Array([...u32(0x04034b50),...u16(20),...u16(0),...u16(0),...u16(0),...u16(0x21),...u32(crc),...u32(data.length),...u32(data.length),...u16(nb.length),...u16(0),...nb,...data]);
+  chunks.push(local);
+  centrals.push(new Uint8Array([...u32(0x02014b50),...u16(20),...u16(20),...u16(0),...u16(0),...u16(0),...u16(0x21),...u32(crc),...u32(data.length),...u32(data.length),...u16(nb.length),...u16(0),...u16(0),...u16(0),...u16(0),...u32(0),...u32(off),...nb]));
+  off+=local.length;
+ }
+ const cdsize=centrals.reduce((n,x)=>n+x.length,0);
+ const eocd=new Uint8Array([...u32(0x06054b50),...u16(0),...u16(0),...u16(centrals.length),...u16(centrals.length),...u32(cdsize),...u32(off),...u16(0)]);
+ return new Blob([...chunks,...centrals,eocd],{type:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
+};
+
+/* ---------- Menu Pengaturan instansi: unggah kop surat ---------- */
+function setKopStatus(kind,text){const s=$('kop-status');if(!s)return;s.className='inline-alert '+kind;s.textContent=text;}
+window.renderSettings=function(){
+ const s=readInst(),img=$('kop-preview-img'),empty=$('kop-empty'),meta=$('kop-meta'),rm=$('kop-remove');
+ if(!img)return;
+ if(s.kop){img.src=s.kop.dataUrl;img.hidden=false;empty.hidden=true;rm.disabled=false;
+  meta.textContent=(s.kop.name||'kop')+' · '+s.kop.w+'×'+s.kop.h+' px · '+Math.round(s.kop.dataUrl.length*0.75/1024)+' KB · diperbarui '+new Date(s.kop.updated||Date.now()).toLocaleString('id-ID');}
+ else{img.removeAttribute('src');img.hidden=true;empty.hidden=false;rm.disabled=true;meta.textContent='';}
+ $('kop-apply-dpp').checked=!!s.apply.dpp_ep;$('kop-apply-hps').checked=!!s.apply.price_ep;$('kop-apply-pl').checked=!!s.apply.pl;
+};
+window.kopUpload=function(input){
+ const f=input.files&&input.files[0];input.value='';
+ if(!f)return;
+ if(!/^image\/(png|jpeg|webp)$/.test(f.type)){setKopStatus('error','Format harus PNG, JPG, atau WebP.');return;}
+ if(f.size>5*1024*1024){setKopStatus('error','Ukuran berkas melebihi 5 MB. Perkecil gambar terlebih dahulu.');return;}
+ const url=URL.createObjectURL(f),img=new Image();
+ img.onerror=()=>{URL.revokeObjectURL(url);setKopStatus('error','Gambar tidak dapat dibaca.');};
+ img.onload=()=>{
+  try{
+   let w=img.naturalWidth,h=img.naturalHeight;
+   if(!w||!h)throw new Error('Dimensi gambar tidak valid.');
+   const sc=Math.min(1,1600/w);w=Math.round(w*sc);h=Math.round(h*sc);
+   const cv=document.createElement('canvas');cv.width=w;cv.height=h;
+   const g=cv.getContext('2d');g.fillStyle='#fff';g.fillRect(0,0,w,h);g.drawImage(img,0,0,w,h);
+   let data=cv.toDataURL('image/png');
+   if(data.length>1.2e6)data=cv.toDataURL('image/jpeg',0.92);
+   if(data.length>2.0e6)data=cv.toDataURL('image/jpeg',0.8);
+   if(data.length>2.0e6)throw new Error('Gambar terlalu besar setelah dioptimalkan. Gunakan gambar yang lebih sederhana atau lebih kecil.');
+   const s=readInst();
+   if(!writeInst({kop:{dataUrl:data,w,h,name:f.name.slice(0,120),updated:new Date().toISOString()},apply:s.apply}))return;
+   if(typeof appendGlobalAudit==='function'){appendGlobalAudit('Kop surat instansi diperbarui',f.name.slice(0,120));persist();}
+   setKopStatus('ok','Kop surat tersimpan di browser ini dan langsung dipakai pada keluaran SPSE yang diaktifkan di bawah.');
+   renderSettings();
+  }catch(e){setKopStatus('error','Gagal memproses gambar: '+e.message);}
+  finally{URL.revokeObjectURL(url);}
+ };
+ img.src=url;
+};
+window.kopApply=function(){
+ const s=readInst();
+ s.apply={dpp_ep:$('kop-apply-dpp').checked,price_ep:$('kop-apply-hps').checked,pl:$('kop-apply-pl').checked};
+ writeInst(s);
+ setKopStatus('info','Pilihan penerapan kop disimpan.');
+};
+window.kopRemove=function(){
+ if(!confirm('Hapus kop surat dari browser ini? Dokumen berikutnya akan dicetak tanpa kop.'))return;
+ const s=readInst();writeInst({kop:null,apply:s.apply});
+ if(typeof appendGlobalAudit==='function'){appendGlobalAudit('Kop surat instansi dihapus','');persist();}
+ setKopStatus('info','Kop surat dihapus.');renderSettings();
+};
+
+/* Sinkronkan tampilan awal bila tab SPSE sudah aktif */
+if(document.getElementById('view-spse')?.classList.contains('active')){try{renderSpse();}catch(e){}}
+})();
 </script>
 </body>
 </html>
