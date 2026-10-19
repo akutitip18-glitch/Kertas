@@ -767,6 +767,170 @@ body.kkpp-lowfi,body.kkpp-lowfi main{background:#f3f6f8!important;background-ima
 @media(max-width:720px){.kkpp-v7-grid{grid-template-columns:1fr}.kkpp-v7-filterbar{grid-template-columns:1fr}.kkpp-v7-card{padding:14px}.kkpp-v7-table-wrap{margin-left:-2px}.kkpp-v7-table{min-width:900px}}
 @media(prefers-reduced-motion:reduce){.kkpp-v7-card *,body *{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 </style>
+<style id="kkpp-iphone-responsive-fix">
+/* iPhone/Safari responsive repair: compact header, readable controls, complete tab labels. */
+@media (max-width: 620px) {
+  html, body { max-width: 100%; overflow-x: hidden; }
+  header {
+    position: relative !important;
+    top: auto !important;
+    width: 100%;
+  }
+  .head {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+    width: 100%;
+    padding: 12px 14px 10px !important;
+  }
+  .brand {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: 100%;
+    min-width: 0;
+  }
+  .brand .mark { flex: 0 0 42px; width: 42px; height: 42px; }
+  .brand > div:last-child { min-width: 0; }
+  .brand h1 {
+    font-size: 16px !important;
+    line-height: 1.25 !important;
+    letter-spacing: -.01em !important;
+    overflow-wrap: normal;
+  }
+  .brand p {
+    max-width: 100% !important;
+    margin-top: 3px !important;
+    font-size: 11px !important;
+    line-height: 1.4 !important;
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+  .actions {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    align-items: stretch !important;
+    justify-content: stretch !important;
+    gap: 8px !important;
+    width: 100% !important;
+    min-width: 0;
+    margin: 0;
+  }
+  .actions > .year-mode {
+    grid-column: 1 / -1;
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between !important;
+    gap: 8px !important;
+    width: 100% !important;
+    min-width: 0;
+    flex: 0 0 auto !important;
+    padding: 7px 9px !important;
+  }
+  .year-mode label {
+    font-size: 12px !important;
+    line-height: 1.3;
+    white-space: nowrap;
+  }
+  .year-mode select {
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: 62% !important;
+    flex: 0 1 62%;
+    padding: 8px !important;
+    font-size: 14px !important;
+  }
+  .actions > button.btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 42px;
+    padding: 9px 10px !important;
+    margin: 0 !important;
+    font-size: 12px !important;
+    line-height: 1.25 !important;
+    text-align: center;
+    white-space: normal !important;
+    overflow-wrap: normal;
+  }
+  .actions > #kkpp-v7-lowfi { grid-column: 1 / -1; }
+  .actions > button[onclick="window.print()"] { grid-column: 1 / -1; }
+
+  /* Tabs are a sibling of the main header so they can stick without pinning the tall header. */
+  nav.tabs {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 50 !important;
+    display: block;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+  }
+  .tabrow {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 4px !important;
+    width: max-content !important;
+    min-width: 100%;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 10px !important;
+    white-space: nowrap !important;
+  }
+  .tab {
+    display: block;
+    flex: 0 0 auto !important;
+    width: auto !important;
+    min-width: max-content !important;
+    max-width: none !important;
+    min-height: 46px;
+    padding: 12px 12px !important;
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+  }
+  .wrap {
+    width: 100%;
+    max-width: 100%;
+    margin: 12px auto 0 !important;
+    padding: 0 12px calc(30px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  .notice {
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+    padding: 14px !important;
+    margin-bottom: 12px !important;
+    overflow-wrap: anywhere;
+  }
+  .card { padding: 15px !important; border-radius: 16px !important; min-width: 0; }
+  .section-head { gap: 8px !important; }
+  .caseitem, .ref, .kkpd-status, .kkpp-v7-status { overflow-wrap: anywhere; }
+  /* Prevent iOS Safari's automatic zoom when a form control receives focus. */
+  input:not([type="hidden"]), select, textarea { font-size: 16px !important; }
+  button, .btn, select { touch-action: manipulation; }
+  .ops-map-head { flex-direction: column; }
+}
+@media (max-width: 380px) {
+  .head { padding-left: 12px !important; padding-right: 12px !important; }
+  .brand h1 { font-size: 15px !important; }
+  .actions { gap: 6px !important; }
+  .actions > button.btn { padding: 8px !important; font-size: 11px !important; }
+  .year-mode label { font-size: 11px !important; }
+  .year-mode select { max-width: 60% !important; padding: 7px !important; }
+  .tab { padding-left: 10px !important; padding-right: 10px !important; }
+  .wrap { padding-left: 10px !important; padding-right: 10px !important; }
+}
+</style>
 </head>
 <body>
 <header>
@@ -774,10 +938,11 @@ body.kkpp-lowfi,body.kkpp-lowfi main{background:#f3f6f8!important;background-ima
 <div class="brand"><div class="mark">PP</div><div><h1>Kertas Kerja Pejabat Pengadaan</h1><p>Alat bantu pencatatan proses • lokal/offline • data tersimpan di perangkat ini</p></div></div>
 <div class="actions no-print"><div class="year-mode"><label for="year-mode-select">Tahun aktif</label><select id="year-mode-select" aria-label="Filter tampilan berdasarkan tahun anggaran" onchange="setYearFilter(this.value)"><option value="all">Semua tahun</option></select></div><button class="btn ghost" onclick="exportBackup()">Ekspor cadangan</button><button class="btn ghost" onclick="document.getElementById('import-file').click()">Impor cadangan</button><input accept="application/json" hidden="" id="import-file" onchange="importBackup(this)" type="file"/><button class="btn ghost" onclick="window.print()">Cetak halaman</button></div>
 </div>
+</header>
 <nav class="tabs no-print" aria-label="Navigasi utama aplikasi"><div class="tabrow" role="tablist" aria-label="Menu utama" aria-orientation="horizontal">
 <button type="button" class="tab active" id="tab-dashboard" role="tab" aria-selected="true" aria-controls="view-dashboard" tabindex="0" data-view="dashboard">Ringkasan</button><button type="button" class="tab" id="tab-paket" role="tab" aria-selected="false" aria-controls="view-paket" tabindex="-1" data-view="paket">Daftar paket</button><button type="button" class="tab" id="tab-kerja" role="tab" aria-selected="false" aria-controls="view-kerja" tabindex="-1" data-view="kerja">Kertas kerja</button><button type="button" class="tab" id="tab-dokumen" role="tab" aria-selected="false" aria-controls="view-dokumen" tabindex="-1" data-view="dokumen">Dokumen kerja</button><button type="button" class="tab" id="tab-spse" role="tab" aria-selected="false" aria-controls="view-spse" tabindex="-1" data-view="spse">Output SPSE</button><button type="button" class="tab" id="tab-regulasi" role="tab" aria-selected="false" aria-controls="view-regulasi" tabindex="-1" data-view="regulasi">Dasar hukum</button><button type="button" class="tab" id="tab-kendali" role="tab" aria-selected="false" aria-controls="view-kendali" tabindex="-1" data-view="kendali">Kendali &amp; Data</button><button type="button" class="tab" id="tab-panduan" role="tab" aria-selected="false" aria-controls="view-panduan" tabindex="-1" data-view="panduan">Panduan &amp; batasan</button>
 </div></nav>
-</header>
+
 <main class="wrap">
 <div class="notice"><strong>Catatan penggunaan hukum</strong>Aplikasi ini adalah alat bantu administrasi, bukan sumber hukum atau pengganti keputusan Pejabat Pengadaan/PPK/PA-KPA. Pastikan peraturan, dokumen pemilihan, pendelegasian, kebijakan instansi, dan kondisi paket yang berlaku telah diperiksa pada sumber resmi sebelum tindakan. Jangan menganggap checklist atau keluaran aplikasi sebagai persetujuan, penetapan pemenang, kontrak, atau bukti kepatuhan otomatis.</div>
 <section class="view active" id="view-dashboard" role="tabpanel" aria-labelledby="tab-dashboard" tabindex="0"><div class="ops-map-slot" id="map-dashboard"></div>
